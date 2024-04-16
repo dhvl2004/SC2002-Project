@@ -2,25 +2,53 @@ package branch;
 
 import java.util.ArrayList;
 import item.Item;
-import staff.Manager;
+import order.Order;
 import staff.Staff;
+import staff.Manager;
 
 public class Branch {
-    private int branchId;
-    private boolean isOperating = true;
-    private int openingHour = 800, closingHour = 2200;
+    private String branchName;
+    private String branchLocation;
+
+    private int staffQuota;
+    private int managerQuota;
+    private int[] managerQuotaList = {1, 2, 3};
+    private int[] managerQuotaThreshold = {1, 5, 9};
+
+    boolean isOperating = true;
+    int openingHour = 800, closingHour = 2200;
     
     ArrayList<Staff> staffList = new ArrayList<>();
     ArrayList<Manager> managerList = new ArrayList<>();
     ArrayList<Item> itemList = new ArrayList<>();
     ArrayList<Order> orderList = new ArrayList<>();
 
-    public Branch(int branchId) {
-        this.branchId = branchId;
+    public Branch(String branchName, String branchLocation, int staffQuota) {
+        this.branchName = branchName;
+        this.branchLocation = branchLocation;
+        this.staffQuota = staffQuota;
+        for (int i = 0; i <= managerQuotaThreshold.length; i++) {
+            if (this.getStaffQuota() <= managerQuotaThreshold[i]) {
+                this.managerQuota = managerQuotaList[i];
+                break;
+            }
+        }
     }
 
-    public int getBranchId() {
-        return this.branchId;
+    public String getBranchName() {
+        return this.branchName;
+    }
+
+    public String getBranchLocation() {
+        return this.branchLocation;
+    }
+
+    public int getStaffQuota() {
+        return this.staffQuota;
+    }
+
+    public int getManagerQuota() {
+        return this.managerQuota;
     }
 
     public boolean getIsOperating() {
@@ -49,17 +77,5 @@ public class Branch {
 
     public ArrayList<Order> getOrderList() {
         return this.orderList;
-    }
-
-    public boolean shutdown() {
-        if (this.isOperating == false) return false;
-        this.isOperating = false;
-        return true;
-    }
-
-    public boolean reopen() {
-        if (this.isOperating == true) return false;
-        this.isOperating = true;
-        return true;
-    }
+    }    
  }
