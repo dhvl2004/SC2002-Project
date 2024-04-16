@@ -4,18 +4,22 @@ import branch.Branch;
 import branch.OrderManagement;
 
 public class Staff {
+    public enum Gender {M, F};
+
     protected Branch branch;
-    protected int staffId;
+    protected String staffId;
+    protected String staffName;
     protected String password = "password";
-    protected boolean isMale;
+    protected Gender gender;
     protected int age;
 
     protected OrderManagement orderManagement = new OrderManagement(this.branch);
 
-    public Staff(Branch branch, int staffId, boolean isMale, int age) {
+    public Staff(Branch branch, String staffId, String staffName, Gender gender, int age) {
         this.branch = branch;
         this.staffId = staffId;
-        this.isMale = isMale;
+        this.staffName = staffName;
+        this.gender = gender;
         this.age = age;
     }
 
@@ -23,16 +27,20 @@ public class Staff {
         return this.branch;
     }
 
-    public int getStaffId() {
+    public String getStaffId() {
         return this.staffId;
+    }
+
+    public String getStaffName() {
+        return this.staffName;
     }
 
     public String getPassword() {
         return this.password;
     }
 
-    public boolean getIsMale() {
-        return this.isMale;
+    public Gender getGender() {
+        return this.gender;
     }
 
     public int getAge() {
@@ -43,8 +51,12 @@ public class Staff {
         this.branch = newBranch;
     }
 
-    public void setStaffId(int newStaffId) {
+    public void setStaffId(String newStaffId) {
         this.staffId = newStaffId;
+    }
+
+    public void setStaffName(String newStaffName) {
+        this.staffName = newStaffName;
     }
 
     public boolean setPassword(String newPassword) {
@@ -53,8 +65,8 @@ public class Staff {
         return true;
     }
 
-    public void setIsMale(boolean newIsMale) {
-        this.isMale = newIsMale;
+    public void setGender(Gender newGender) {
+        this.gender = newGender;
     }
 
     public void setAge(int newAge) {
@@ -62,7 +74,7 @@ public class Staff {
     }
 
     public void displayOrderList() {
-        for (int i = 0; i <= this.branch.getOrderList(); i++) {
+        for (int i = 0; i <= this.branch.getOrderList().size(); i++) {
             ///
 
             ///
@@ -73,11 +85,13 @@ public class Staff {
         ///
 
         ///
+        return true;
     }
 
     public boolean processOrder(int orderId) {
         ///
 
         ///
+        return true;
     }
 }

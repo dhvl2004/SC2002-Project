@@ -1,5 +1,7 @@
 package branch;
 
+import order.Order;
+
 public class OrderManagement {
     private Branch branch;
 
@@ -7,17 +9,33 @@ public class OrderManagement {
         this.branch = branch;
     }
 
-    public Order findOrder(int orderId) {
+    public Order find(String orderId) {
+        Order order = null;
         for (int i = 0; i < this.branch.orderList.size(); i++) {
-            if (orderId == this.branch.orderList.get(i).getOrderId()) return this.branch.orderList.get(i);
+            if (orderId == this.branch.orderList.get(i).getOrderId()) {
+                order = this.branch.orderList.get(i);
+                break;
+            }
         }
-        return null;
+        return order;
     }
 
-    public boolean processOrder(int orderId) {
-        Order order = findOrder(orderId);
-        if (order == null) return false;
-        order.processOrder();
+    public boolean add(Order order) {
+        if (this.find(order.getOrderId()) != null) {
+            return false;
+        }
+        
+        this.branch.orderList.add(order);
         return true;
+    }
+
+    public Order remove(String orderId) {
+        Order order = this.find(orderId);
+        if (order == null) {
+            return null;
+        }
+        
+        this.branch.orderList.remove(order);
+        return order;
     }
 }
