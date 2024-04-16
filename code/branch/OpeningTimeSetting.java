@@ -7,28 +7,28 @@ public class OpeningTimeSetting {
         this.branch = branch;
     }
 
-    private boolean validHour(int hour) {
+    private boolean isValidHour(int hour) {
         if (hour < 0 || hour > 2400) {
             return false;
         }
         return true;
     }
 
-    private boolean validTimeSpan(int beginHour, int endHour) {
+    private boolean isValidTimeSpan(int beginHour, int endHour) {
         if (beginHour > endHour) {
             return false;
         }
         return true;
     }
     
-    public boolean setOpeningTime(int newOpeningHour, int newClosingHour) {
-        if (!validHour(newOpeningHour) || !validHour(newClosingHour) || 
-        !validTimeSpan(newOpeningHour, newClosingHour)) {
+    public boolean setOpeningTime(int openingHour, int closingHour) {
+        if (!isValidHour(openingHour) || !isValidHour(closingHour) || 
+        !isValidTimeSpan(openingHour, closingHour)) {
             return false;
         }
         
-        this.branch.openingHour = newOpeningHour;
-        this.branch.closingHour = newClosingHour;
+        this.branch.openingHour = openingHour;
+        this.branch.closingHour = closingHour;
         return true;
     }
 }

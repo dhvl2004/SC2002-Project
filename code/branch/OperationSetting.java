@@ -7,7 +7,7 @@ public class OperationSetting {
         this.branch = branch;
     }
 
-    public boolean shutdown() {
+    public boolean close() {
         if (this.branch.isOperating == false) {
             return false;
         }
@@ -16,7 +16,7 @@ public class OperationSetting {
         return true;
     }
 
-    public boolean reopen() {
+    public boolean open() {
         if (this.branch.isOperating == true) {
             return false;
         }
