@@ -13,7 +13,7 @@ public class CardPaymentMode implements PaymentMode {
         }
     }
 
-    protected static void setAvailability(boolean available) {
+    public void setAvailability(boolean available) {
         CardPaymentMode.available = available;
     }
 
