@@ -1,7 +1,7 @@
 package payment;
 
 public class CardPaymentMode implements PaymentMode {
-    private static boolean available = true; 
+    private static boolean available = true;
 
     public boolean processPayment(double amount) {
         if (available) {
