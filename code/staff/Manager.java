@@ -8,15 +8,15 @@ import item.Item;
 public class Manager extends Staff {
     private ItemManagement itemManagement = new ItemManagement(this.branch);
 
-    public Manager(Branch branch, String staffId, String staffName, Gender gender, int age) {
-        super(branch, staffId, staffName, gender, age);
+    public Manager(Branch branch, String loginId, String staffName, Gender gender, int age) {
+        super(branch, loginId, staffName, gender, age);
     }
 
     public void displayStaffList() {
         ArrayList<Staff> staffList = this.branch.getStaffList();
         for (int i = 0; i <= staffList.size(); i++) {
             System.out.println("Staff No." + (i + 1));
-            System.out.println("\tStaff ID:\t" + staffList.get(i).getId());
+            System.out.println("\tStaff Login ID:\t" + staffList.get(i).getId());
             System.out.println("\tGender:\t" + staffList.get(i).getGender());
             System.out.println("\tAge:\t" + staffList.get(i).getAge());
         }

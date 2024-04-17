@@ -1,8 +1,20 @@
 package system;
 
+import staff.Staff.Gender;
+
 public class Admin implements User {
-    private String adminId = "default";
+    private String adminId;
     private String password = "password";
+    private String name;
+    private Gender gender;
+    private int age;
+
+    public Admin(String adminId, String name, Gender gender, int age) {
+        this.adminId = adminId;
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+    }
 
     public String getId() {
         return this.adminId;
@@ -12,9 +24,7 @@ public class Admin implements User {
         return this.password;
     }
 
-    public boolean setPassword(String password) {
-        if (password == this.password) return false;
+    public void setPassword(String password) {
         this.password = password;
-        return true;
     }
 }

@@ -8,18 +8,18 @@ public class Staff implements User {
     public enum Gender {M, F};
 
     protected Branch branch;
-    protected String staffId;
-    protected String staffName;
+    protected String loginId;
     protected String password = "password";
+    protected String name;
     protected Gender gender;
     protected int age;
 
     protected OrderManagement orderManagement = new OrderManagement(this.branch);
 
-    public Staff(Branch branch, String staffId, String staffName, Gender gender, int age) {
+    public Staff(Branch branch, String loginId, String name, Gender gender, int age) {
         this.branch = branch;
-        this.staffId = staffId;
-        this.staffName = staffName;
+        this.loginId = loginId;
+        this.name = name;
         this.gender = gender;
         this.age = age;
     }
@@ -29,15 +29,15 @@ public class Staff implements User {
     }
 
     public String getId() {
-        return this.staffId;
-    }
-
-    public String getStaffName() {
-        return this.staffName;
+        return this.loginId;
     }
 
     public String getPassword() {
         return this.password;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public Gender getGender() {
@@ -48,22 +48,20 @@ public class Staff implements User {
         return this.age;
     }
 
-    public void setBranch(Branch newBranch) {
-        this.branch = newBranch;
+    public void setBranch(Branch branch) {
+        this.branch = branch;
     }
 
-    public void setStaffId(String newStaffId) {
-        this.staffId = newStaffId;
+    public void setId(String loginId) {
+        this.loginId = loginId;
     }
 
-    public void setStaffName(String newStaffName) {
-        this.staffName = newStaffName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public boolean setPassword(String newPassword) {
-        if (newPassword == this.password) return false;
-        this.password = newPassword;
-        return true;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setGender(Gender newGender) {

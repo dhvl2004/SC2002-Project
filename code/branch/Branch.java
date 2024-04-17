@@ -20,10 +20,10 @@ public class Branch {
     private OperationStatus operationStatus = OperationStatus.OPEN;
     private int openingHour = 800, closingHour = 2200;
     
-    ArrayList<Staff> staffList = new ArrayList<>();
-    ArrayList<Manager> managerList = new ArrayList<>();
-    ArrayList<Item> itemList = new ArrayList<>();
-    ArrayList<Order> orderList = new ArrayList<>();
+    ArrayList<Staff> staffList = new ArrayList<Staff>();
+    ArrayList<Manager> managerList = new ArrayList<Manager>();
+    ArrayList<Item> itemList = new ArrayList<Item>();
+    ArrayList<Order> orderList = new ArrayList<Order>();
 
     public Branch(String branchName, String branchLocation, int staffQuota) {
         this.branchName = branchName;

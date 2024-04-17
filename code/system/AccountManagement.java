@@ -1,17 +1,19 @@
 package system;
 
-public class AccountManagement {
-    private Database database;
+import java.util.ArrayList;
 
-    public AccountManagement(Database database) {
-        this.database = database;
+public class AccountManagement {
+    private ArrayList<User> accountList;
+
+    public AccountManagement(ArrayList<User> accountList) {
+        this.accountList = accountList;
     }
 
     public User find(String userId) {
         User user = null;
-        for (int i = 0; i < this.database.accountList.size(); i++) {
-            if (userId == this.database.accountList.get(i).getId()) {
-                user = this.database.accountList.get(i);
+        for (int i = 0; i < this.accountList.size(); i++) {
+            if (userId == this.accountList.get(i).getId()) {
+                user = this.accountList.get(i);
                 break;
             }
         }
@@ -23,7 +25,7 @@ public class AccountManagement {
             return false;
         }
 
-        this.database.accountList.add(user);
+        this.accountList.add(user);
         return true;
     }
 
@@ -33,7 +35,7 @@ public class AccountManagement {
             return null;
         }
 
-        this.database.accountList.remove(user);
+        this.accountList.remove(user);
         return user;
     }
 }
