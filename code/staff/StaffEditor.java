@@ -12,7 +12,7 @@ public class StaffEditor {
     }
     
     public boolean editStaffId(String newStaffId) {
-        if (this.staff == null || newStaffId == this.staff.getStaffId()) {
+        if (this.staff == null || newStaffId == this.staff.getId()) {
             return false;
         }
         

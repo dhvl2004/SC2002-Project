@@ -1,9 +1,10 @@
 package staff;
 
+import system.User;
 import branch.Branch;
 import branch.OrderManagement;
 
-public class Staff {
+public class Staff implements User {
     public enum Gender {M, F};
 
     protected Branch branch;
@@ -27,7 +28,7 @@ public class Staff {
         return this.branch;
     }
 
-    public String getStaffId() {
+    public String getId() {
         return this.staffId;
     }
 

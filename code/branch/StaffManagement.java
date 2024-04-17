@@ -12,7 +12,7 @@ public class StaffManagement {
     public Staff find(String staffId) {
         Staff staff = null;
         for (int i = 0; i < this.branch.staffList.size(); i++) {
-            if (staffId == this.branch.staffList.get(i).getStaffId()) {
+            if (staffId == this.branch.staffList.get(i).getId()) {
                 staff =  this.branch.staffList.get(i);
                 break;
             }
@@ -22,7 +22,7 @@ public class StaffManagement {
 
     public boolean add(Staff staff) {
         if (this.branch.staffList.size() == this.branch.getStaffQuota() ||
-        this.find(staff.getStaffId()) != null) {
+        this.find(staff.getId()) != null) {
             return false;
         }
 

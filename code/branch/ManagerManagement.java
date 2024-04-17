@@ -12,7 +12,7 @@ public class ManagerManagement {
     public Manager find(String managerId) {
         Manager manager = null;
         for (int i = 0; i < this.branch.managerList.size(); i++) {
-            if (managerId == this.branch.managerList.get(i).getStaffId()) {
+            if (managerId == this.branch.managerList.get(i).getId()) {
                 manager = this.branch.managerList.get(i);
                 break;
             }
@@ -22,7 +22,7 @@ public class ManagerManagement {
 
     public boolean add(Manager manager) {
         if (this.branch.managerList.size() == this.branch.getManagerQuota() ||
-        this.find(manager.getStaffId()) != null) {
+        this.find(manager.getId()) != null) {
             return false;
         }
 
