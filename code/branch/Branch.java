@@ -7,6 +7,8 @@ import staff.Staff;
 import staff.Manager;
 
 public class Branch {
+    public enum OperationStatus {OPEN, CLOSE};
+
     private String branchName;
     private String branchLocation;
 
@@ -15,8 +17,8 @@ public class Branch {
     private int[] managerQuotaList = {1, 2, 3};
     private int[] managerQuotaThreshold = {1, 5, 9};
 
-    boolean isOperating = true;
-    int openingHour = 800, closingHour = 2200;
+    private OperationStatus operationStatus = OperationStatus.OPEN;
+    private int openingHour = 800, closingHour = 2200;
     
     ArrayList<Staff> staffList = new ArrayList<>();
     ArrayList<Manager> managerList = new ArrayList<>();
@@ -51,8 +53,8 @@ public class Branch {
         return this.managerQuota;
     }
 
-    public boolean getIsOperating() {
-        return this.isOperating;
+    public OperationStatus getOperationStatus() {
+        return this.operationStatus;
     }
 
     public int getOpeningHour() {
@@ -77,5 +79,17 @@ public class Branch {
 
     public ArrayList<Order> getOrderList() {
         return this.orderList;
-    }    
+    }
+
+    public void setOperationStatus(OperationStatus operationStatus) {
+        this.operationStatus = operationStatus;
+    }
+
+    public void setOpeningHour(int openingHour) {
+        this.openingHour = openingHour;
+    }
+
+    public void setClosingHour(int closingHour) {
+        this.closingHour = closingHour;
+    }
  }

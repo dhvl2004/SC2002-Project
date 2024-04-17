@@ -1,5 +1,7 @@
 package branch;
 
+import branch.Branch.OperationStatus;
+
 public class OperationSetting {
     private Branch branch;
 
@@ -8,20 +10,20 @@ public class OperationSetting {
     }
 
     public boolean close() {
-        if (this.branch.isOperating == false) {
+        if (this.branch.getOperationStatus() != OperationStatus.OPEN) {
             return false;
         }
 
-        this.branch.isOperating = false;
+        this.branch.setOperationStatus(OperationStatus.CLOSE);
         return true;
     }
 
     public boolean open() {
-        if (this.branch.isOperating == true) {
+        if (this.branch.getOperationStatus() != OperationStatus.CLOSE) {
             return false;
         }
 
-        this.branch.isOperating = true;
+        this.branch.setOperationStatus(OperationStatus.OPEN);
         return true;
     }
 }

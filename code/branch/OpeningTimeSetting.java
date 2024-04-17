@@ -27,8 +27,8 @@ public class OpeningTimeSetting {
             return false;
         }
         
-        this.branch.openingHour = openingHour;
-        this.branch.closingHour = closingHour;
+        this.branch.setOpeningHour(openingHour);
+        this.branch.setClosingHour(closingHour);
         return true;
     }
 }
