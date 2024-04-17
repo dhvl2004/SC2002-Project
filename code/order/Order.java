@@ -4,17 +4,19 @@ import java.util.ArrayList;
 import item.Item;
 
 public class Order {
+    public enum DiningOption {DINEIN, TAKEAWAY};
+
     private String orderId;
     private ArrayList<Item> itemOrdered;
     boolean status = false;
-    private boolean isDiningIn;
-    private int paymentType;
+    private DiningOption diningOption;
+    private int paymentMode;
 
-    public Order(String orderId, ArrayList<Item> itemOrdered, boolean isDiningIn, int paymentType) {
+    public Order(String orderId, ArrayList<Item> itemOrdered, DiningOption diningOption, int paymentMode) {
         this.orderId = orderId;
         this.itemOrdered = itemOrdered;
-        this.isDiningIn = isDiningIn;
-        this.paymentType = paymentType;
+        this.diningOption = diningOption;
+        this.paymentMode = paymentMode;
     }
 
     public String getOrderId() {
@@ -29,11 +31,11 @@ public class Order {
         return this.status;
     }
 
-    public boolean getIsDiningIn() {
-        return this.isDiningIn;
+    public DiningOption getDiningOption() {
+        return this.diningOption;
     }
 
-    public int getPaymentType() {
-        return this.paymentType;
+    public int getPaymentMode() {
+        return this.paymentMode;
     }
 }

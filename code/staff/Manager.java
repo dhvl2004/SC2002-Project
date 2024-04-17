@@ -22,8 +22,8 @@ public class Manager extends Staff {
         }
     }
 
-    public boolean addItem(String itemId, double price, int quantity, String description) {
-        Item item = new Item(itemId, price, quantity, description);
+    public boolean addItem(String itemId, String itemName, double price, int quantity, String description) {
+        Item item = new Item(itemId, itemName, price, quantity, description);
         return itemManagement.add(item);
     }
 
