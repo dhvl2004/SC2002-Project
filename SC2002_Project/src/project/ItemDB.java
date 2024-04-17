@@ -24,8 +24,7 @@ public class ItemDB {
 			// get individual 'fields' of the string separated by SEPARATOR
 			StringTokenizer star = new StringTokenizer(st, SEPARATOR);
 			
-			String s = star.nextToken().trim();
-			int itemId = Integer.parseInt(s);
+			int itemId = Integer.parseInt(star.nextToken().trim());
 			String name = star.nextToken().trim();
 			Double price = Double.parseDouble(star.nextToken().trim());
 			String branch = star.nextToken().trim();
