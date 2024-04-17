@@ -1,9 +1,9 @@
 package branch;
 
-public class OpeningTimeSetting {
+public class OpeningTimeEditor {
     private Branch branch;
 
-    public OpeningTimeSetting(Branch branch) {
+    public OpeningTimeEditor(Branch branch) {
         this.branch = branch;
     }
 

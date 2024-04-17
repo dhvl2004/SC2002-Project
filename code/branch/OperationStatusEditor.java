@@ -2,10 +2,10 @@ package branch;
 
 import branch.Branch.OperationStatus;
 
-public class OperationSetting {
+public class OperationStatusEditor {
     private Branch branch;
 
-    public OperationSetting(Branch branch) {
+    public OperationStatusEditor(Branch branch) {
         this.branch = branch;
     }
 
