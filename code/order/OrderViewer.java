@@ -23,7 +23,7 @@ public class OrderViewer {
             System.out.println(item.getItemName() + "\t" + item.getQuantity());
         }
         System.out.println("-------------");
-        System.out.print("Order Status:\t" + this.order.getStatus());
+        System.out.print("Order Status:\t" + this.order.getOrderStatus().toString());
         System.out.println("Dining Option:\t" + this.order.getDiningOption().toString());
         System.out.println("Payment Mode:\t" + this.order.getPaymentMode());
     }

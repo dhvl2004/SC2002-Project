@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import item.Item;
 
 public class Order {
-    public enum DiningOption {DINEIN, TAKEAWAY};
+    public enum OrderStatus {NEW, READY_TO_PICKUP, PICKED_UP};
+    public enum DiningOption {DINE_IN, TAKEAWAY};
 
     private String orderId;
     private ArrayList<Item> itemOrdered;
-    boolean status = false;
+    private OrderStatus orderStatus = OrderStatus.NEW;
     private DiningOption diningOption;
     private int paymentMode;
 
@@ -27,8 +28,8 @@ public class Order {
         return this.itemOrdered;
     }
 
-    public boolean getStatus() {
-        return this.status;
+    public OrderStatus getOrderStatus() {
+        return this.orderStatus;
     }
 
     public DiningOption getDiningOption() {
@@ -37,5 +38,9 @@ public class Order {
 
     public int getPaymentMode() {
         return this.paymentMode;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }
