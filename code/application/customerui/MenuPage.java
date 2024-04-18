@@ -12,9 +12,9 @@ class MenuPage {
     }
 
     public void displayMenu() {
-        System.out.println("ID\tName\tPrice\tCategory");
+        System.out.println("ID\t\tName\t\tPrice\t\tCategory");
         for (Item item: this.menu) {
-            System.out.println(item.getId() + "\t" + item.getName() + "\t" + item.getPrice() + "\t" + item.getCategory());
+            System.out.println(item.getId() + "\t\t" + item.getName() + "\t\t" + item.getPrice() + "\t\t" + item.getCategory());
         }
     }
 }

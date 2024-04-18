@@ -12,9 +12,9 @@ class CartPage {
     }
 
     public void displayCart() {
-        System.out.println("ID\tName\tPrice\tCategory\t");
+        System.out.println("ID\t\tName\t\tPrice\t\tCategory\t\t");
         for (Item item: this.cart) {
-            System.out.println(item.getId() + "\t" + item.getName() + "\t" + item.getPrice() + "\t" + item.getCategory());
+            System.out.println(item.getId() + "\t\t" + item.getName() + "\t\t" + item.getPrice() + "\t\t" + item.getCategory());
         }
     }
 }

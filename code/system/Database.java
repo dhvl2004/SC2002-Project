@@ -43,12 +43,12 @@ public class Database {
         ItemManagement jeItemManagement = new ItemManagement(JE);
 
         ntuItemManagement.addItem(new Item("fries", "FRIES", 3.2, Category.SIDE));
-        ntuItemManagement.addItem(new Item("3pcsetmeal", "3PC set meal", 9.9, Category.SET_MEAL));
-        jpItemManagement.addItem(new Item("caijunfish", "CAIJUN FISH", 5.6, Category.BURGER));
-        jeItemManagement.addItem(new Item("coleslaw", "COLE SLAW", 2.7, Category.SIDE));
-        jeItemManagement.addItem(new Item("3pcsetmeal", "3PC set meal", 10.4, Category.SET_MEAL));
-        jpItemManagement.addItem(new Item("chickennugget", "CHICKEN NUGGET", 6.9, Category.SIDE));
-        ntuItemManagement.addItem(new Item("chickennugget", "CHICKEN NUGGET", 6.9, Category.SIDE));
+        ntuItemManagement.addItem(new Item("set", "3PC set meal", 9.9, Category.SET_MEAL));
+        jpItemManagement.addItem(new Item("fish", "CAIJUN FISH", 5.6, Category.BURGER));
+        jeItemManagement.addItem(new Item("salad", "COLE SLAW", 2.7, Category.SIDE));
+        jeItemManagement.addItem(new Item("set", "3PC set meal", 10.4, Category.SET_MEAL));
+        jpItemManagement.addItem(new Item("nugget", "CHICKEN NUGGET", 6.9, Category.SIDE));
+        ntuItemManagement.addItem(new Item("nugget", "CHICKEN NUGGET", 6.9, Category.SIDE));
         jeItemManagement.addItem(new Item("pepsi", "PEPSI", 2.1, Category.DRINK));
     }
 

@@ -47,6 +47,7 @@ public class CustomerInterface {
             System.out.println("1. Go to Menu");
             System.out.println("2. Go to Cart");
             System.out.println("3. Checkout");
+            System.out.println("4. Return to Start");
             System.out.print("Enter option: ");
             try {
                 int choice = sc.nextInt();
@@ -60,6 +61,8 @@ public class CustomerInterface {
                     case 3:
                         // Add checkout logic here
                         break;
+                    case 4:
+                        return;
                     default:
                         System.out.println("Invalid option. Please choose again.");
                         break;
