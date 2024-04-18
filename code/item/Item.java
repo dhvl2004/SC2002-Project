@@ -1,11 +1,12 @@
 package item;
 public class Item {
+    public enum Category {SIDE, SET_MEAL, BURGER, DRINK}
     private String itemId;
     private String name;
     private double price;
-    private String category;
+    private Category category;
 
-    public Item(String itemId, String name, double price, String category) {
+    public Item(String itemId, String name, double price, Category category) {
         this.itemId = itemId;
         this.name = name;
         this.price = price;
@@ -24,7 +25,7 @@ public class Item {
         return this.price;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
@@ -40,7 +41,7 @@ public class Item {
         this.price = price;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 }

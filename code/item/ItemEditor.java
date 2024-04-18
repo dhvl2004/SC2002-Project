@@ -1,5 +1,7 @@
 package item;
 
+import item.Item.Category;
+
 public class ItemEditor {
     private Item item;
 
@@ -25,7 +27,7 @@ public class ItemEditor {
         return true;
     }
 
-    public boolean editCategory(String category) {
+    public boolean editCategory(Category category) {
         if (this.item == null || category == this.item.getCategory()) {
             return false;
         }

@@ -66,7 +66,7 @@ public class CustomerInterface {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number.");
-                sc.next(); // Consume invalid input
+                sc.next();
             }
         }
         sc.close();

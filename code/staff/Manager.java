@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import branch.Branch;
 import branch.ItemManagement;
 import item.Item;
+import item.Item.Category;
 
 public class Manager extends Staff {
     private ItemManagement itemManagement = new ItemManagement(this.branch);
@@ -22,7 +23,7 @@ public class Manager extends Staff {
         }
     }
 
-    public boolean addItem(String itemId, String itemName, double price, int quantity, String category) {
+    public boolean addItem(String itemId, String itemName, double price, int quantity, Category category) {
         Item item = new Item(itemId, itemName, price, category);
         return itemManagement.addItem(item);
     }
