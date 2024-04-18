@@ -12,14 +12,12 @@ public class BranchManagement {
     }
 
     public Branch find(String branchName) {
-        Branch branch = null;
-        for (int i = 0; i < this.branchList.size(); i++) {
-            if (branchName == this.branchList.get(i).getBranchName()) {
-                branch = this.branchList.get(i);
-                break;
+        for (Branch branch : this.branchList) {
+            if (branchName.equals(branch.getBranchName())) {
+                return branch;
             }
         }
-        return branch;
+        return null;
     }
 
     public boolean add(Branch branch) {
