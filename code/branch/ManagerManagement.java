@@ -9,8 +9,8 @@ public class ManagerManagement {
         this.branch = branch;
     }
 
-    public Manager find(String managerId) {
-        for (Manager manager : this.branch.managerList) {
+    public Manager getManager(String managerId) {
+        for (Manager manager : this.branch.getManagerList()) {
             if (managerId.equals(manager.getId())) {
                 return manager;
             }
@@ -18,23 +18,27 @@ public class ManagerManagement {
         return null;
     }
 
-    public boolean add(Manager manager) {
+    public boolean addManager(Manager manager) {
         if (this.branch.managerList.size() == this.branch.getManagerQuota() ||
-        this.find(manager.getId()) != null) {
+                getManager(manager.getId()) != null) {
+            System.out.println("Cannot add manager. Manager quota reached or manager already exists.");
             return false;
         }
 
         this.branch.managerList.add(manager);
+        System.out.println("Manager added: " + manager.getName());
         return true;
     }
 
-    public Manager remove(String managerId) {
-        Manager manager = this.find(managerId);
+    public Manager removeManager(String managerId) {
+        Manager manager = getManager(managerId);
         if (manager == null) {
+            System.out.println("Manager with ID " + managerId + " not found.");
             return null;
         }
 
         this.branch.managerList.remove(manager);
+        System.out.println("Manager removed: " + manager.getName());
         return manager;
     }
 }

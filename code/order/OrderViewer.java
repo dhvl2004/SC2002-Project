@@ -17,10 +17,10 @@ public class OrderViewer {
         }
         System.out.println("Order ID: " + this.order.getOrderId());
         System.out.println("-------------");
-        System.out.println("Item Ordered\tAmount");
+        System.out.println("Item Ordered");
         for (int i = 0; i < this.order.getItemOrdered().size(); i++) {
             Item item = this.order.getItemOrdered().get(i);
-            System.out.println(item.getName() + "\t" + item.getQuantity());
+            System.out.println(item.getName());
         }
         System.out.println("-------------");
         System.out.print("Order Status:\t" + this.order.getOrderStatus().toString());

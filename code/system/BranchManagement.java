@@ -1,18 +1,16 @@
 package system;
 
-import java.util.ArrayList;
-
 import branch.Branch;
 
 public class BranchManagement {
-    private ArrayList<Branch> branchList;
+    private Database database;
 
-    public BranchManagement(ArrayList<Branch> branchList) {
-        this.branchList = branchList;
+    public BranchManagement(Database database) {
+        this.database = database;
     }
 
     public Branch find(String branchName) {
-        for (Branch branch : this.branchList) {
+        for (Branch branch : this.database.branchList) {
             if (branchName.equals(branch.getBranchName())) {
                 return branch;
             }
@@ -25,7 +23,7 @@ public class BranchManagement {
             return false;
         }
 
-        this.branchList.add(branch);
+        this.database.branchList.add(branch);
         return true;
     }
 
@@ -35,7 +33,7 @@ public class BranchManagement {
             return null;
         }
 
-        this.branchList.remove(branch);
+        this.database.branchList.remove(branch);
         return branch;
     }
 }

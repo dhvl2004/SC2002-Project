@@ -8,7 +8,7 @@ public class StaffEditor {
 
     public StaffEditor(Branch branch, String loginId) {
         StaffManagement staffManagement = new StaffManagement(branch);
-        this.staff = staffManagement.find(loginId);
+        this.staff = staffManagement.getStaff(loginId);
     }
     
     public boolean editId(String loginId) {

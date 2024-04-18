@@ -25,21 +25,12 @@ public class ItemEditor {
         return true;
     }
 
-    public boolean editQuantity(int quantity) {
-        if (this.item == null || quantity == this.item.getQuantity()) {
+    public boolean editCategory(String category) {
+        if (this.item == null || category == this.item.getCategory()) {
             return false;
         }
 
-        this.item.setQuantity(quantity);
-        return true;
-    }
-
-    public boolean editDescription(String description) {
-        if (this.item == null || description == this.item.getDescription()) {
-            return false;
-        }
-
-        this.item.setDescription(description);
+        this.item.setCategory(category);
         return true;
     }
 }

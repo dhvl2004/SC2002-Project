@@ -9,7 +9,7 @@ public class StaffManagement {
         this.branch = branch;
     }
 
-    public Staff find(String staffId) {
+    public Staff getStaff(String staffId) {
         for (Staff staff : this.branch.staffList) {
             if (staffId.equals(staff.getId())) {
                 return staff;
@@ -18,23 +18,27 @@ public class StaffManagement {
         return null;
     }
 
-    public boolean add(Staff staff) {
+    public boolean addStaff(Staff staff) {
         if (this.branch.staffList.size() == this.branch.getStaffQuota() ||
-        this.find(staff.getId()) != null) {
+                this.getStaff(staff.getId()) != null) {
+            System.out.println("Cannot add staff. Staff quota reached or staff already exists.");   
             return false;
         }
 
         this.branch.staffList.add(staff);
+        System.out.println("Staff added: " + staff.getName());
         return true;
     }
 
-    public Staff remove(String staffId) {
-        Staff staff = this.find(staffId);
+    public Staff removeStaff(String staffId) {
+        Staff staff = this.getStaff(staffId);
         if (staff == null) {
+            System.out.println("Staff with ID " + staffId + " not found.");
             return null;
         }
 
         this.branch.staffList.remove(staff);
+        System.out.println("Staff removed: " + staff.getName());
         return staff;
     }
 }

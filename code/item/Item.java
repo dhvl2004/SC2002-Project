@@ -3,15 +3,13 @@ public class Item {
     private String itemId;
     private String name;
     private double price;
-    private int quantity;
-    private String description;
+    private String category;
 
-    public Item(String itemId, String name, double price, int quantity, String description) {
+    public Item(String itemId, String name, double price, String category) {
         this.itemId = itemId;
         this.name = name;
         this.price = price;
-        this.quantity = quantity;
-        this.description = description;
+        this.category = category;
     }
 
     public String getId() {
@@ -26,12 +24,8 @@ public class Item {
         return this.price;
     }
 
-    public int getQuantity() {
-        return this.quantity;
-    }
-
-    public String getDescription() {
-        return this.description;
+    public String getCategory() {
+        return category;
     }
 
     public void setId(String itemId) {
@@ -46,12 +40,8 @@ public class Item {
         this.price = price;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
 

@@ -14,8 +14,6 @@ public class Branch {
 
     private int staffQuota;
     private int managerQuota = 0;
-    private int[] managerQuotaList = {1, 2, 3};
-    private int[] managerQuotaThreshold = {1, 5, 9};
 
     private OperationStatus operationStatus = OperationStatus.OPEN;
     private int openingHour = 800, closingHour = 2200;
@@ -29,14 +27,21 @@ public class Branch {
         this.branchName = branchName;
         this.branchLocation = branchLocation;
         this.staffQuota = staffQuota;
-        for (int i = 0; i < this.managerQuotaThreshold.length; i++) {
-            if (this.getStaffQuota() <= this.managerQuotaThreshold[i]) {
-                this.managerQuota = this.managerQuotaList[i];
+        calculateManagerQuota();
+    }
+
+    private void calculateManagerQuota() {
+        int[] managerQuotaThreshold = { 1, 5, 9 };
+        int[] managerQuotaList = { 1, 2, 3 };
+        this.managerQuota = 0;
+        for (int i = 0; i < managerQuotaThreshold.length; i++) {
+            if (this.staffQuota <= managerQuotaThreshold[i]) {
+                this.managerQuota = managerQuotaList[i];
                 break;
             }
         }
         if (this.managerQuota == 0) {
-            this.managerQuota = this.managerQuotaList[this.managerQuotaList.length - 1];
+            this.managerQuota = managerQuotaList[managerQuotaList.length - 1];
         }
     }
 

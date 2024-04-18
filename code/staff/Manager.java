@@ -22,12 +22,12 @@ public class Manager extends Staff {
         }
     }
 
-    public boolean addItem(String itemId, String itemName, double price, int quantity, String description) {
-        Item item = new Item(itemId, itemName, price, quantity, description);
-        return itemManagement.add(item);
+    public boolean addItem(String itemId, String itemName, double price, int quantity, String category) {
+        Item item = new Item(itemId, itemName, price, category);
+        return itemManagement.addItem(item);
     }
 
-    public boolean editItem(String itemId, int newItemId, double newPrice, int newQuantity, String newDescription) {
+    public boolean editItem(String itemId, int newItemId, double newPrice, String newDescription) {
         ///
 
         ///
@@ -35,7 +35,7 @@ public class Manager extends Staff {
     }
 
     public Item removeItem(String itemId) {
-        return itemManagement.remove(itemId);
+        return itemManagement.removeItem(itemId);
     }
 }
 
