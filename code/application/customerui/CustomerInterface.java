@@ -8,15 +8,39 @@ import branch.Branch;
 import item.Item;
 
 public class CustomerInterface {
+    private Branch currentBranch;
     public CustomerInterface(ArrayList<Branch> branchList) {
-        WelcomePage welcomePage = new WelcomePage(branchList);
 
-        ArrayList<Item> menu = welcomePage.getChosenBranch().getItemList();
+        System.out.println("LOGIN AS CUSTOMER");
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.println("Please choose your current branch:");
+            for (int i = 0; i < branchList.size(); i++) {
+                System.out.println((i + 1) + ". " + branchList.get(i).getBranchName());
+            }
+            System.out.println();
+
+            System.out.print("Please enter the branch index: ");
+            int choice = sc.nextInt();
+
+            if (choice < 1 || choice > branchList.size()) {
+                sc.close();
+                throw new InputMismatchException("Invalid branch index.");
+            }
+
+            this.currentBranch = branchList.get(choice - 1);
+            System.out.println("You are currently in " + this.currentBranch.getBranchName());
+        } 
+        catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a valid branch index.");
+        } 
+
+        ArrayList<Item> menu = this.currentBranch.getItemList();
         ArrayList<Item> cart = new ArrayList<Item>();
         MenuPage menuPage = new MenuPage(menu);
         CartPage cartPage = new CartPage(cart);
         
-        Scanner sc = new Scanner(System.in);
         boolean running = true;
         while (running) {
             System.out.println("Choose your option:");
@@ -26,7 +50,6 @@ public class CustomerInterface {
             System.out.print("Enter option: ");
             try {
                 int choice = sc.nextInt();
-                sc.next();
                 switch (choice) {
                     case 1:
                         menuPage.displayMenu();
