@@ -6,15 +6,18 @@ import java.text.DecimalFormat;
 
 public class Cart {
     private List<CartItem> itemList;
-
-// this will trigger an error message for comparator issue
-//    public Cart() {
-//        this.itemList = new ArrayList<>();
-//    }
-
-    public List<CartItem> getCartItemList() {
-        return itemList;
+    
+    public Cart() {
+    	itemList = new ArrayList<CartItem>();
     }
+    
+//    public List<CartItem> getCartItemList() {
+//    	itemList = new ArrayList<CartItem>();
+//    	return itemList;
+//    }
+	public void addCartItem() {
+		itemList.add(null);
+	}
 	
     public void displayCartItems() {
     	System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");

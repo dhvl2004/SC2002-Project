@@ -1,38 +1,37 @@
 package project;
 
-//=======================================================================
-/*	CartItem class	*/
-//======================================================================
 public class CartItem {
-	private int itemId;
-	private double price;
-	private int quantity;
-	private String description;
+	private String itemName;
+	private double itemPrice;
+	private String itemCategory;
+	private int itemQuantity;
+	private String itemDescription;
 		
-	public CartItem(int itemId, double price, int quantity, String description) {
-		this.itemId = itemId;
-		this.price = price;
-		this.quantity = quantity;
-		this.description = description;
+	public CartItem(String name, double price, String category, int quantity, String description) {
+		this.itemName = name;
+		this.itemPrice = price;
+		this.itemCategory = category;
+		this.itemQuantity = quantity;
+		this.itemDescription = description;
 	}
 	
-	public int getItemId() {
-		return itemId;
+	public String itemName() {
+		return itemName;
 	}
 	
-	public double getPrice() {
-		return price;
+	public double itemPrice() {
+		return itemPrice;
 	}
 	
-	public int getQuantity() {
-		return quantity;
+	public String itemCategory() {
+		return itemCategory;
 	}
 	
-  public void setQuantity(int newQuantity) {
-      this.quantity = newQuantity;
-  }
+	public int itemQuantity() {
+		return itemQuantity;
+	}
 	
-	public String getDescription() {
-		return description;
+	public String itemDescription() {
+		return itemDescription;
 	}
 }

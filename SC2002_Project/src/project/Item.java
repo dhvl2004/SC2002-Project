@@ -58,13 +58,19 @@ public class Item {
 		}
 		else {
 			System.out.println(branchLocation + " has the following items on the menu: ");
+			int i = 1;
 			for (Iterator<Item> it = itemSet.iterator(); it.hasNext(); ) {
 				Item itemObj = it.next();
 				if (itemObj.getItemBranch().equals(branchLocation)) {
-	                System.out.printf("Name: %-20s  Price: %.2f  Quantity: %d%n",
+					System.out.printf("hi");
+	                System.out.printf("%d. Name: %-20s  Price: %.2f  Quantity: %d%n",
+	                				  i,
 									  itemObj.getItemName(),
 									  itemObj.getItemPrice(),
-									  itemObj.getItemQuantity());
+									  itemObj.getItemCategory(),
+									  itemObj.getItemQuantity(),
+									  itemObj.getItemDescription());
+	                i++;
 				}
 			}
 		}
