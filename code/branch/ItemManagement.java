@@ -12,7 +12,7 @@ public class ItemManagement {
     public Item find(String itemId) {
         Item item = null;
         for (int i = 0; i < this.branch.itemList.size(); i++) {
-            if (itemId == this.branch.itemList.get(i).getItemId()) {
+            if (itemId == this.branch.itemList.get(i).getId()) {
                 item = this.branch.itemList.get(i);
                 break;
             }
@@ -21,7 +21,7 @@ public class ItemManagement {
     }
 
     public boolean add(Item item) {
-        if (this.find(item.getItemId()) != null) {
+        if (this.find(item.getId()) != null) {
             return false;
         }
         

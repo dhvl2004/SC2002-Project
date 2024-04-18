@@ -12,12 +12,12 @@ public class StaffInterface {
         this.database = database;
         LoginPage loginPage = new LoginPage(this.database.getAccountList());
         if (!loginPage.isSuccessLogin()) {
-            
+            System.exit(0);
         }
         this.staffType = loginPage.getStaffType();
         switch (staffType) {
             case ADMIN:
-                AdminPage adminPage = new AdminPage(database);
+                AdminPage adminPage = new AdminPage();
                 break;
             case MANAGER:
 

@@ -29,7 +29,7 @@ class LoginPage {
             this.currentUser = accountManagement.find(userId);
         } while (currentUser == null);
 
-        if (currentUser instanceof Admin) {
+        if (this.currentUser instanceof Admin) {
             this.staffType = StaffType.ADMIN;
         }
         else if (currentUser instanceof Manager) {
@@ -44,7 +44,7 @@ class LoginPage {
         while (userTrial < passwordTrial) {
             System.out.print("Enter Password: ");
             password = sc.next();
-            if (password == currentUser.getPassword()) {
+            if (password == this.currentUser.getPassword()) {
                 this.successLogin = true;
                 break;
             }

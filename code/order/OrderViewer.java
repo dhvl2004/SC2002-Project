@@ -20,7 +20,7 @@ public class OrderViewer {
         System.out.println("Item Ordered\tAmount");
         for (int i = 0; i < this.order.getItemOrdered().size(); i++) {
             Item item = this.order.getItemOrdered().get(i);
-            System.out.println(item.getItemName() + "\t" + item.getQuantity());
+            System.out.println(item.getName() + "\t" + item.getQuantity());
         }
         System.out.println("-------------");
         System.out.print("Order Status:\t" + this.order.getOrderStatus().toString());

@@ -1,14 +1,10 @@
 package item;
 
-import branch.Branch;
-import branch.ItemManagement;
-
 public class StockEditor {
     private Item item;
 
-    public StockEditor(Branch branch, String itemId) {
-        ItemManagement itemManagement = new ItemManagement(branch);
-        this.item = itemManagement.find(itemId);
+    public StockEditor(Item item) {
+        this.item = item;
     }
 
     public boolean addStock(int itemAmount) {
@@ -16,16 +12,16 @@ public class StockEditor {
             return false;
         }
 
-        this.item.quantity += itemAmount;
+        this.item.setQuantity(this.item.getQuantity() + itemAmount);
         return true;
     }
 
     public boolean removeStock(int itemAmount) {
-        if (this.item == null || itemAmount <= 0 || this.item.quantity < itemAmount) {
+        if (this.item == null || itemAmount <= 0 || this.item.getQuantity() < itemAmount) {
             return false;
         }
 
-        this.item.quantity -= itemAmount;
+        this.item.setQuantity(this.item.getQuantity() - itemAmount);
         return true;
     }
 }

@@ -1,49 +1,45 @@
 package item;
 
-import branch.Branch;
-import branch.ItemManagement;
-
 public class ItemEditor {
     private Item item;
 
-    public ItemEditor(Branch branch, String itemId) {
-        ItemManagement itemManagement = new ItemManagement(branch);
-        this.item = itemManagement.find(itemId);
+    public ItemEditor(Item item) {
+        this.item = item;
     }
 
-    public boolean editItemId(String newItemId) {
-        if (this.item == null || newItemId == this.item.getItemId()) {
+    public boolean editId(String itemId) {
+        if (this.item == null || itemId == this.item.getId()) {
             return false;
         }
 
-        this.item.itemId = newItemId;
+        this.item.setId(itemId);
         return true;
     }
 
-    public boolean editItemPrice(double newPrice) {
-        if (this.item == null || newPrice == this.item.getPrice()) {
+    public boolean editPrice(double price) {
+        if (this.item == null || price == this.item.getPrice()) {
             return false;
         }
 
-        this.item.price = newPrice;
+        this.item.setPrice(price);
         return true;
     }
 
-    public boolean editItemQuantity(int newQuantity) {
-        if (this.item == null || newQuantity == this.item.getQuantity()) {
+    public boolean editQuantity(int quantity) {
+        if (this.item == null || quantity == this.item.getQuantity()) {
             return false;
         }
 
-        this.item.quantity = newQuantity;
+        this.item.setQuantity(quantity);
         return true;
     }
 
-    public boolean editItemDescription(String newDescription) {
-        if (this.item == null || newDescription == this.item.getDescription()) {
+    public boolean editDescription(String description) {
+        if (this.item == null || description == this.item.getDescription()) {
             return false;
         }
 
-        this.item.description = newDescription;
+        this.item.setDescription(description);
         return true;
     }
 }
