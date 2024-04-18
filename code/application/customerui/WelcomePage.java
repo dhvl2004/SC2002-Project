@@ -3,10 +3,9 @@ package application.customerui;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import application.Page;
 import branch.Branch;
 
-class WelcomePage implements Page {
+class WelcomePage {
     WelcomePage(ArrayList<Branch> branchList) {
         System.out.println("LOGIN AS CUSTOMER");
         Scanner sc = new Scanner(System.in);
@@ -23,9 +22,5 @@ class WelcomePage implements Page {
         Branch branch = branchList.get(choice - 1);
         System.out.println("You are currently in " + branch.getBranchName());
         sc.close();
-    }
-    
-    public void exit() {
-        
     }
 }
