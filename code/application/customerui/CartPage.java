@@ -1,20 +1,27 @@
 package application.customerui;
 
-import java.util.ArrayList;
+import java.util.Scanner;
 
-import item.Item;
+import cart.Cart;
 
 class CartPage {
-    private ArrayList<Item> cart;
-
-    CartPage(ArrayList<Item> cart) {
-        this.cart = cart;
-    }
-
-    public void displayCart() {
-        System.out.println("ID\t\tName\t\tPrice\t\tCategory\t\t");
-        for (Item item: this.cart) {
-            System.out.println(item.getId() + "\t\t" + item.getName() + "\t\t" + item.getPrice() + "\t\t" + item.getCategory());
+    CartPage(Scanner sc, Cart cart) {
+        cart.displayCart();
+        System.out.println("Please enter your action:");
+        System.out.println("1. Edit Item in Cart");
+        System.out.println("2. Remove Item from Cart");
+        System.out.println("3. Go Back");
+        int choice = sc.nextInt();
+        switch (choice) {
+            case 1:
+                
+                break;
+            case 2:
+                break;
+            case 3:
+                return;
+            default:
+                return;
         }
     }
 }
