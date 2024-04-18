@@ -44,7 +44,7 @@ class LoginPage {
         while (userTrial < passwordTrial) {
             System.out.print("Enter Password: ");
             password = sc.next();
-            if (password == this.currentUser.getPassword()) {
+            if (password.equals(this.currentUser.getPassword())) {
                 this.successLogin = true;
                 break;
             }

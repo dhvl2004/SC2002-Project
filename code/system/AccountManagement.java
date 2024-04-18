@@ -10,14 +10,12 @@ public class AccountManagement {
     }
 
     public User find(String userId) {
-        User user = null;
-        for (int i = 0; i < this.accountList.size(); i++) {
-            if (userId == this.accountList.get(i).getId()) {
-                user = this.accountList.get(i);
-                break;
+        for (User account : accountList) {
+            if (userId.equals(account.getId())) {
+                return account;
             }
         }
-        return user;
+        return null;
     }
 
     public boolean add(User user) {

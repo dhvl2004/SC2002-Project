@@ -1,5 +1,7 @@
 package branch;
 
+import java.util.ArrayList;
+
 import staff.Manager;
 
 public class ManagerManagement {
@@ -10,14 +12,12 @@ public class ManagerManagement {
     }
 
     public Manager find(String managerId) {
-        Manager manager = null;
-        for (int i = 0; i < this.branch.managerList.size(); i++) {
-            if (managerId == this.branch.managerList.get(i).getId()) {
-                manager = this.branch.managerList.get(i);
-                break;
+        for (Manager manager : this.branch.managerList) {
+            if (managerId.equals(manager.getId())) {
+                return manager;
             }
         }
-        return manager;
+        return null;
     }
 
     public boolean add(Manager manager) {
