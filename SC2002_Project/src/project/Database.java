@@ -9,9 +9,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Database {
+	private static final String directory = System.getProperty("user.dir") + "/resources/";
+	
 	public static List<String> read(String fileName) throws IOException {
 		List<String> data = new ArrayList<String>();
-		Scanner scanner = new Scanner(new FileInputStream(fileName));
+		Scanner scanner = new Scanner(new FileInputStream(directory + fileName));
 //		if (scanner.hasNextLine()) scanner.nextLine();	// to remove csv header
 		try {
 			while (scanner.hasNextLine()) data.add(scanner.nextLine());
@@ -22,7 +24,7 @@ public class Database {
 	}
 	
 	public static void write(String fileName, List<String> data) throws IOException {
-		PrintWriter out = new PrintWriter(new FileWriter(fileName));
+		PrintWriter out = new PrintWriter(new FileWriter(directory + fileName));
 		
 		try {
 			for (int i = 0; i < data.size(); i++) {
