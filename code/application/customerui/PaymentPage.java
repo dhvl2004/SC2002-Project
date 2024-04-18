@@ -1,13 +1,13 @@
 package application.customerui;
 
-import java.util.ArrayList;
+import java.util.Scanner;
 
-import item.Item;
+import cart.Cart;
 
 class PaymentPage {
     private boolean successPayment = false;
-    PaymentPage(ArrayList<Item> cart) {
-        
+    PaymentPage(Scanner sc, Cart cart) {
+        System.out.println("Please choose your payment method");
     }
 
     public boolean isSuccessPayment() {

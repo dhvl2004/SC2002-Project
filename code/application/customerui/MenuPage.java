@@ -30,6 +30,7 @@ class MenuPage {
                             System.out.print("Enter quantity: ");
                             int quantity = sc.nextInt();
                             cartManagement.addCartItem(new CartItem(item, quantity));
+                            itemNotFound = false;
                             break;
                         }
                     }

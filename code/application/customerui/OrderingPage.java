@@ -37,6 +37,7 @@ class OrderingPage {
                             break;
                         }
                         else {
+                            new PaymentPage(sc, cart);
                             checkedOut = true;
                             return;
                         }
