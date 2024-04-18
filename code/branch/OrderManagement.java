@@ -10,14 +10,12 @@ public class OrderManagement {
     }
 
     public Order find(String orderId) {
-        Order order = null;
-        for (int i = 0; i < this.branch.orderList.size(); i++) {
-            if (orderId == this.branch.orderList.get(i).getOrderId()) {
-                order = this.branch.orderList.get(i);
-                break;
+        for (Order order : this.branch.orderList) {
+            if (orderId.equals(order.getOrderId())) {
+                return order;
             }
         }
-        return order;
+        return null;
     }
 
     public boolean add(Order order) {

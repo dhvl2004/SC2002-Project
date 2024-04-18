@@ -1,7 +1,5 @@
 package branch;
 
-import java.util.ArrayList;
-
 import staff.Manager;
 
 public class ManagerManagement {

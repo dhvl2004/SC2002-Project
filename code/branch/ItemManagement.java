@@ -1,18 +1,16 @@
 package branch;
 
-import java.util.ArrayList;
-
 import item.Item;
 
 public class ItemManagement {
-    private ArrayList<Item> itemList;
+    private Branch branch;
 
-    public ItemManagement(ArrayList<Item> itemList) {
-        this.itemList = itemList;
+    public ItemManagement(Branch branch) {
+        this.branch = branch;
     }
 
     public Item find(String itemId) {
-        for (Item item : this.itemList) {
+        for (Item item : this.branch.itemList) {
             if (itemId.equals(item.getId())) {
                 return item;
             }
@@ -25,7 +23,7 @@ public class ItemManagement {
             return false;
         }
         
-        this.itemList.add(item);
+        this.branch.itemList.add(item);
         return true;
     }
 
@@ -35,7 +33,7 @@ public class ItemManagement {
             return null;
         }
         
-        this.itemList.remove(item);
+        this.branch.itemList.remove(item);
         return item;
     }
 }

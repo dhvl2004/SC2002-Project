@@ -10,14 +10,12 @@ public class StaffManagement {
     }
 
     public Staff find(String staffId) {
-        Staff staff = null;
-        for (int i = 0; i < this.branch.staffList.size(); i++) {
-            if (staffId == this.branch.staffList.get(i).getId()) {
-                staff =  this.branch.staffList.get(i);
-                break;
+        for (Staff staff : this.branch.staffList) {
+            if (staffId.equals(staff.getId())) {
+                return staff;
             }
         }
-        return staff;
+        return null;
     }
 
     public boolean add(Staff staff) {
