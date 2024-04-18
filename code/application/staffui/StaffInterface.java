@@ -6,7 +6,6 @@ public class StaffInterface {
     enum StaffType {STAFF, MANAGER, ADMIN};
 
     private Database database;
-    private StaffType staffType;
 
     public StaffInterface(Database database) {
         this.database = database;
@@ -14,16 +13,15 @@ public class StaffInterface {
         if (!loginPage.isSuccessLogin()) {
             System.exit(0);
         }
-        this.staffType = loginPage.getStaffType();
-        switch (staffType) {
+        switch (loginPage.getStaffType()) {
             case ADMIN:
-                AdminPage adminPage = new AdminPage();
+                AdminPage adminPage = new AdminPage(this.database);
                 break;
             case MANAGER:
-
+                ManagerPage managerPage = new ManagerPage();
                 break;
             case STAFF:
-
+                StaffPage staffPage = new StaffPage();
                 break;
             default:
                 break;

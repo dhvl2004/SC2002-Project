@@ -1,6 +1,7 @@
-package system;
+package admin;
 
 import staff.Staff.Gender;
+import system.User;
 
 public class Admin implements User {
     private String adminId;

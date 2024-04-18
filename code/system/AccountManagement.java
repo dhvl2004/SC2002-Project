@@ -2,6 +2,8 @@ package system;
 
 import java.util.ArrayList;
 
+import admin.Admin;
+
 public class AccountManagement {
     private ArrayList<User> accountList;
 

@@ -1,19 +1,19 @@
 package system;
 import java.util.ArrayList;
 
+import admin.Admin;
 import branch.Branch;
 import staff.Manager;
 import staff.Staff;
 import staff.Staff.Gender;
 
 public class Database {
-    Admin admin;
     ArrayList<Branch> branchList = new ArrayList<Branch>();
     ArrayList<User> accountList = new ArrayList<User>();
 
     public Database() {
-        this.admin = new Admin("boss", "Boss", Gender.F, 62);
-        this.accountList.add(this.admin);
+        Admin boss = new Admin("boss", "Boss", Gender.F, 62);
+        this.accountList.add(boss);
         
         Branch NTU = new Branch("NTU", "North Spine Plaza", 8);
         Branch JP = new Branch("JP", "Jurong Point", 15);
@@ -34,10 +34,6 @@ public class Database {
         this.accountList.add(AlicaA);
         this.accountList.add(MaryL);
         this.accountList.add(JustinL);
-    }
-    
-    public Admin getAdmin() {
-        return admin;
     }
 
     public ArrayList<Branch> getBranchList() {

@@ -6,7 +6,7 @@ import java.util.Scanner;
 import application.staffui.StaffInterface.StaffType;
 import staff.Manager;
 import system.AccountManagement;
-import system.Admin;
+import admin.Admin;
 import system.User;
 
 class LoginPage {

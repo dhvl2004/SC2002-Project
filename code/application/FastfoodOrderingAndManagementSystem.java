@@ -32,17 +32,5 @@ public class FastfoodOrderingAndManagementSystem {
                     break;
             }
         }
-        
-        // Choose option for customer or staff
-            // CUSTOMER
-                // Customer Page
-            // STAFF
-                // Login Using ID and Password
-                    // NORMAL STAFF
-                        // Staff Page
-                    // MANAGER
-                        // Manager Page
-                    // ADMIN
-                        // Admin Page
     }
 }
