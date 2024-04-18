@@ -3,6 +3,9 @@ import java.util.ArrayList;
 
 import admin.Admin;
 import branch.Branch;
+import branch.ItemManagement;
+import item.Item;
+import item.Item.Category;
 import staff.Manager;
 import staff.Staff;
 import staff.Staff.Gender;
@@ -34,6 +37,19 @@ public class Database {
         this.accountList.add(AlicaA);
         this.accountList.add(MaryL);
         this.accountList.add(JustinL);
+
+        ItemManagement ntuItemManagement = new ItemManagement(NTU);
+        ItemManagement jpItemManagement = new ItemManagement(JP);
+        ItemManagement jeItemManagement = new ItemManagement(JE);
+
+        ntuItemManagement.addItem(new Item("fries", "FRIES", 3.2, Category.SIDE));
+        ntuItemManagement.addItem(new Item("3pcsetmeal", "3PC set meal", 9.9, Category.SET_MEAL));
+        jpItemManagement.addItem(new Item("caijunfish", "CAIJUN FISH", 5.6, Category.BURGER));
+        jeItemManagement.addItem(new Item("coleslaw", "COLE SLAW", 2.7, Category.SIDE));
+        jeItemManagement.addItem(new Item("3pcsetmeal", "3PC set meal", 10.4, Category.SET_MEAL));
+        jpItemManagement.addItem(new Item("chickennugget", "CHICKEN NUGGET", 6.9, Category.SIDE));
+        ntuItemManagement.addItem(new Item("chickennugget", "CHICKEN NUGGET", 6.9, Category.SIDE));
+        jeItemManagement.addItem(new Item("pepsi", "PEPSI", 2.1, Category.DRINK));
     }
 
     public ArrayList<Branch> getBranchList() {
