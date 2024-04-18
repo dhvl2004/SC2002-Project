@@ -13,7 +13,7 @@ public class Branch {
     private String branchLocation;
 
     private int staffQuota;
-    private int managerQuota;
+    private int managerQuota = 0;
     private int[] managerQuotaList = {1, 2, 3};
     private int[] managerQuotaThreshold = {1, 5, 9};
 
@@ -29,11 +29,14 @@ public class Branch {
         this.branchName = branchName;
         this.branchLocation = branchLocation;
         this.staffQuota = staffQuota;
-        for (int i = 0; i <= managerQuotaThreshold.length; i++) {
-            if (this.getStaffQuota() <= managerQuotaThreshold[i]) {
-                this.managerQuota = managerQuotaList[i];
+        for (int i = 0; i < this.managerQuotaThreshold.length; i++) {
+            if (this.getStaffQuota() <= this.managerQuotaThreshold[i]) {
+                this.managerQuota = this.managerQuotaList[i];
                 break;
             }
+        }
+        if (this.managerQuota == 0) {
+            this.managerQuota = this.managerQuotaList[this.managerQuotaList.length - 1];
         }
     }
 
