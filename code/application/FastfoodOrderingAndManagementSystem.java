@@ -1,9 +1,11 @@
 package application;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import application.customerui.CustomerInterface;
 import application.staffui.StaffInterface;
+import exception.InputOutOfRange;
 import system.Database;
 
 public class FastfoodOrderingAndManagementSystem {
@@ -19,12 +21,12 @@ public class FastfoodOrderingAndManagementSystem {
             System.out.println("1. Customer");
             System.out.println("2. Staff");
             System.out.println("3. Quit");
-            System.out.print("Please enter your option: ");
+            System.out.print("Enter your choice: ");
 
             try {
-                int choice = sc.nextInt();
+                int loginChoice = sc.nextInt();
                 System.out.println();
-                switch (choice) {
+                switch (loginChoice) {
                     case 1:
                         new CustomerInterface(sc, database.getBranchList());
                         break;
@@ -36,12 +38,18 @@ public class FastfoodOrderingAndManagementSystem {
                         System.exit(0);
                         break;
                     default:
-                        System.out.println("Invalid option. Please choose again.");
-                        break;
+                        throw new InputOutOfRange();
                 }
-            } catch (Exception e) {
-                System.out.println("Invalid input. Please enter a number.");
-                sc.nextLine(); // Consume invalid input
+            } 
+            catch (InputMismatchException e) {
+                System.out.println("Invalid input.");
+                sc.next();
+            }
+            catch (InputOutOfRange e) {
+                System.out.println("Invalid input.");
+            }
+            finally {
+                System.out.println();
             }
         }
     }

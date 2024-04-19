@@ -3,60 +3,43 @@ package application.staffui;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import admin.Admin;
-import application.staffui.StaffInterface.StaffType;
-import staff.Manager;
 import system.AccountManagement;
 import system.User;
 
 class LoginPage {
     private boolean successLogin = false;
-    private User currentUser;
-    private StaffType staffType;
-    private int passwordTrial = 3;
-
-    LoginPage(Scanner sc, ArrayList<User> accountList) {
+    User user = null;
+    LoginPage(Scanner sc, ArrayList<User> accountList, int passwordTrial) {
         AccountManagement accountManagement = new AccountManagement(accountList);
 
         String userId = null;
-        do {
-            if (userId != null) {
-                System.out.println("Unknown User! Please enter a different ID.");
-            }
+        while (this.user == null) {
             System.out.print("Enter ID: ");
             userId = sc.next();
-            this.currentUser = accountManagement.find(userId);
-        } while (currentUser == null);
-
-        if (this.currentUser instanceof Admin) {
-            this.staffType = StaffType.ADMINISTRATOR;
-        } else if (currentUser instanceof Manager) {
-            this.staffType = StaffType.MANAGER;
-        } else {
-            this.staffType = StaffType.STAFF;
-        }
+            this.user = accountManagement.getUser(userId);
+            if (this.user == null) {
+                System.out.println("Unknown User! Please enter a different ID.");
+            }
+        } 
 
         String password;
         int userTrial = 0;
         while (userTrial < passwordTrial) {
             System.out.print("Enter Password: ");
             password = sc.next();
-            if (password.equals(this.currentUser.getPassword())) {
-                this.successLogin = true;
+            if (password.equals(user.getPassword())) {
+                successLogin = true;
                 break;
             }
             userTrial++;
         }
         if (userTrial == passwordTrial) {
+            this.user = null;
             System.out.println("Login Failed! Too many incorrect attempts.");
         }
     }
 
-    StaffType getStaffType() {
-        return this.staffType;
-    }
-
-    boolean isSuccessLogin() {
+    public boolean isSuccessLogin() {
         return successLogin;
     }
 }

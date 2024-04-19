@@ -15,8 +15,7 @@ public class Database {
     ArrayList<User> accountList = new ArrayList<User>();
 
     public Database() {
-        Admin boss = new Admin("boss", "Boss", Gender.FEMALE, 62);
-        this.accountList.add(boss);
+        this.accountList.add(new Admin("boss", "Boss", Gender.FEMALE, 62));
         
         Branch NTU = new Branch("NTU", "North Spine Plaza", 8);
         Branch JP = new Branch("JP", "Jurong Point", 15);

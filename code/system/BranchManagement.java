@@ -9,7 +9,7 @@ public class BranchManagement {
         this.database = database;
     }
 
-    public Branch find(String branchName) {
+    public Branch getBranch(String branchName) {
         for (Branch branch : this.database.branchList) {
             if (branchName.equals(branch.getBranchName())) {
                 return branch;
@@ -18,8 +18,8 @@ public class BranchManagement {
         return null;
     }
 
-    public boolean add(Branch branch) {
-        if (this.find(branch.getBranchName()) != null) {
+    public boolean addBranch(Branch branch) {
+        if (this.getBranch(branch.getBranchName()) != null) {
             return false;
         }
 
@@ -27,8 +27,8 @@ public class BranchManagement {
         return true;
     }
 
-    public Branch remove(String branchName) {
-        Branch branch = this.find(branchName);
+    public Branch removeBranch(String branchName) {
+        Branch branch = this.getBranch(branchName);
         if (branch == null) {
             return null;
         }

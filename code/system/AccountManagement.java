@@ -11,7 +11,7 @@ public class AccountManagement {
         this.accountList = accountList;
     }
 
-    public User find(String userId) {
+    public User getUser(String userId) {
         for (User account : accountList) {
             if (userId.equals(account.getUserId())) {
                 return account;
@@ -20,8 +20,8 @@ public class AccountManagement {
         return null;
     }
 
-    public boolean add(User user) {
-        if (this.find(user.getUserId()) != null) {
+    public boolean addUser(User user) {
+        if (this.getUser(user.getUserId()) != null) {
             return false;
         }
 
@@ -29,8 +29,8 @@ public class AccountManagement {
         return true;
     }
 
-    public User remove(String userId) {
-        User user = this.find(userId);
+    public User removeUser(String userId) {
+        User user = this.getUser(userId);
         if (user == null || user instanceof Admin) {
             return null;
         }

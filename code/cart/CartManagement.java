@@ -9,7 +9,7 @@ public class CartManagement {
 
     public CartItem getCartItem(String itemId) {
         for (CartItem cartItem: this.cart.cartItemList) {
-            if (itemId == cartItem.getId()) {
+            if (itemId.equals(cartItem.getId())) {
                 return cartItem;
             }
         }
@@ -33,6 +33,7 @@ public class CartManagement {
             return null;
         }
         this.cart.cartItemList.remove(cartItem);
+        cart.totalPrice -= cartItem.getPrice() * cartItem.getQuantity();
         return cartItem;
     }
 }

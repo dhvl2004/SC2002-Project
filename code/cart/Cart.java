@@ -7,11 +7,11 @@ import java.util.ArrayList;
 // ======================================================================
 public class Cart {
 	
-    ArrayList<CartItem> cartItemList;
-    double totalPrice = 0;
+    protected ArrayList<CartItem> cartItemList;
+    protected double totalPrice = 0;
 
     public Cart() {
-        this.cartItemList = new ArrayList<>();
+        this.cartItemList = new ArrayList<CartItem>();
     }
 
     public ArrayList<CartItem> getCartItemList() {
@@ -24,24 +24,6 @@ public class Cart {
 
     public boolean isEmpty() {
         return cartItemList.isEmpty();
-    }
-
-    public void displayCart() {
-    	System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
-        System.out.println("Cart Items:");
-        for (int i=0; i<cartItemList.size(); i++) {
-            CartItem cartItem = cartItemList.get(i);
-            System.out.println("Item " + (i + 1) + ":");
-            System.out.println("Item ID: " + cartItem.getId());
-            System.out.println("Name: " + cartItem.getName());
-            System.out.println("Price: $" + cartItem.getPrice());
-            System.out.println("Category: " + cartItem.getCategory());
-            System.out.println("Quantity: " + cartItem.getQuantity());
-            System.out.println();
-        }
-        System.out.println("Total Price: " + this.totalPrice);
-        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
-        System.out.println();
     }
 
     /* Should the items within the list be identified with itemId? */

@@ -5,56 +5,65 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import cart.Cart;
+import exception.InputOutOfRange;
 import item.Item;
 
 class OrderingPage {
     private boolean checkedOut = false;
+    private Cart cart = new Cart();
 
     OrderingPage(Scanner sc, ArrayList<Item> menu) {
-        Cart cart = new Cart();
         while (true) {
-            System.out.println("Choose your option:");
+            System.out.println("Please choose your action:");
             System.out.println("1. Go to Menu");
             System.out.println("2. Go to Cart");
             System.out.println("3. Checkout");
             System.out.println("4. Go Back");
-            System.out.println();
-            System.out.print("Enter option: ");
+            System.out.print("Enter your choice: ");
             try {
-                int choice = sc.nextInt();
-                switch (choice) {
+                int customerActionChoice = sc.nextInt();
+                System.out.println();
+                switch (customerActionChoice) {
                     case 1:
-                        new MenuPage(sc, menu, cart);
+                        new MenuPage(sc, menu, this.cart);
                         break;
                     case 2:
-                        new CartPage(sc, cart);
-                        cart.displayCart();
+                        new CartPage(sc, this.cart);
                         System.out.println("");
                         break;
                     case 3:
-                        if (cart.isEmpty()) {
+                        if (this.cart.isEmpty()) {
                             System.out.println("You have no item in your cart! Please try again.");
                             break;
                         }
                         else {
-                            new PaymentPage(sc, cart);
                             checkedOut = true;
                             return;
                         }
                     case 4:
                         return;
                     default:
-                        System.out.println("Invalid option. Please choose again.");
-                        break;
+                        throw new InputOutOfRange();
                 }
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a number.");
+            } 
+            catch (InputMismatchException e) {
+                System.out.println("Invalid input.");
                 sc.next();
+            }
+            catch (InputOutOfRange e) {
+                System.out.println("Invalid input.");
+            }
+            finally {
+                System.out.println();
             }
         }
     }
 
     public boolean isCheckedOut() {
         return checkedOut;
+    }
+
+    public Cart getCart() {
+        return cart;
     }
 }

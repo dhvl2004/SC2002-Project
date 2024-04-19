@@ -4,41 +4,34 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import branch.Branch;
+import branch.OrderManagement;
 
 public class CustomerInterface {
     public CustomerInterface(Scanner sc, ArrayList<Branch> branchList) {
-        Branch currentBranch = null;
-        int currentStage = 1;
         System.out.println("--------------------");
         System.out.println("LOGIN AS CUSTOMER");
         System.out.println("--------------------");
         
         while (true) {
-            switch (currentStage) {
-                case 1:
-                    BranchSelectionPage branchSelectionPage = new BranchSelectionPage(sc, branchList);
-                    currentBranch = branchSelectionPage.getCurrentBranch();
-                    if (currentBranch == null) {
-                        currentStage--;
-                    }
-                    else {
-                        currentStage++;
-                    }
-                    break;
-                case 2:
-                    OrderingPage orderingPage = new OrderingPage(sc, currentBranch.getItemList());
-                    if (orderingPage.isCheckedOut()) {
-                        currentStage++;
-                    }
-                    else {
-                        currentStage--;
-                    }
-                    break;
-                case 3:
-                    break;
-                default:
-                    return;
+            BranchSelectionPage branchSelectionPage = new BranchSelectionPage(sc, branchList);
+            Branch currentBranch = branchSelectionPage.getCurrentBranch();
+            if (currentBranch == null) {
+                break;
             }
+            OrderManagement orderManagement = new OrderManagement(currentBranch);
+
+            OrderingPage orderingPage = new OrderingPage(sc, currentBranch.getItemList());
+            if (!orderingPage.isCheckedOut()) {
+                currentBranch = null;
+                continue;
+            }
+
+            PaymentPage paymentPage = new PaymentPage(sc, orderingPage.getCart());
+            if (!paymentPage.isSuccessPayment()) {
+                continue;
+            }
+            orderManagement.addOrder(paymentPage.getOrder());
+            break;
         }
     }
 }

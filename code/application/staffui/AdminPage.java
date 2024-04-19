@@ -5,8 +5,5 @@ import java.util.Scanner;
 import system.Database;
 
 class AdminPage {
-
-    AdminPage(Scanner sc, Database database) {
-
-    }
+    AdminPage(Scanner sc, Database database) {}
 }

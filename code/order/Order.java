@@ -1,19 +1,21 @@
 package order;
 
 import java.util.ArrayList;
-import item.Item;
+
+import cart.CartItem;
+import payment.PaymentMode;
 
 public class Order {
     public enum OrderStatus {NEW, READY_TO_PICKUP, PICKED_UP};
     public enum DiningOption {DINE_IN, TAKEAWAY};
 
     private String orderId;
-    private ArrayList<Item> itemOrdered;
+    private ArrayList<CartItem> itemOrdered;
     private OrderStatus orderStatus = OrderStatus.NEW;
     private DiningOption diningOption;
-    private int paymentMode;
+    private PaymentMode paymentMode;
 
-    public Order(String orderId, ArrayList<Item> itemOrdered, DiningOption diningOption, int paymentMode) {
+    public Order(String orderId, ArrayList<CartItem> itemOrdered, DiningOption diningOption, PaymentMode paymentMode) {
         this.orderId = orderId;
         this.itemOrdered = itemOrdered;
         this.diningOption = diningOption;
@@ -24,7 +26,7 @@ public class Order {
         return this.orderId;
     }
 
-    public ArrayList<Item> getItemOrdered() {
+    public ArrayList<CartItem> getItemOrdered() {
         return this.itemOrdered;
     }
 
@@ -36,7 +38,7 @@ public class Order {
         return this.diningOption;
     }
 
-    public int getPaymentMode() {
+    public PaymentMode getPaymentMode() {
         return this.paymentMode;
     }
 
