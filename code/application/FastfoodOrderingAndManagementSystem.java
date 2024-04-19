@@ -29,7 +29,7 @@ public class FastfoodOrderingAndManagementSystem {
                         new CustomerInterface(sc, database.getBranchList());
                         break;
                     case 2:
-                        new StaffInterface(database);
+                        new StaffInterface(sc, database);
                         break;
                     case 3:
                         sc.close();

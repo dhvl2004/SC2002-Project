@@ -20,24 +20,20 @@ public class OrderManagement {
 
     public boolean addOrder(Order order) {
         if (getOrder(order.getOrderId()) != null) {
-            System.out.println("Order with ID " + order.getOrderId() + " already exists.");
             return false;
         }
         
         this.branch.orderList.add(order);
-        System.out.println("Order added: " + order.getOrderId());
         return true;
     }
 
     public Order removeOrder(String orderId) {
         Order order = getOrder(orderId);
         if (order == null) {
-            System.out.println("Order with ID " + orderId + " not found.");
             return null;
         }
         
         this.branch.orderList.remove(order);
-        System.out.println("Order removed: " + orderId);
         return order;
     }
 }

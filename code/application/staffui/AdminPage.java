@@ -1,11 +1,12 @@
 package application.staffui;
 
+import java.util.Scanner;
+
 import system.Database;
 
 class AdminPage {
-    private Database database;
 
-    AdminPage(Database database) {
-        this.database = database;
+    AdminPage(Scanner sc, Database database) {
+
     }
 }

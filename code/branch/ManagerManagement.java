@@ -11,7 +11,7 @@ public class ManagerManagement {
 
     public Manager getManager(String managerId) {
         for (Manager manager : this.branch.getManagerList()) {
-            if (managerId.equals(manager.getId())) {
+            if (managerId.equals(manager.getUserId())) {
                 return manager;
             }
         }
@@ -20,7 +20,7 @@ public class ManagerManagement {
 
     public boolean addManager(Manager manager) {
         if (this.branch.managerList.size() == this.branch.getManagerQuota() ||
-                getManager(manager.getId()) != null) {
+                getManager(manager.getUserId()) != null) {
             System.out.println("Cannot add manager. Manager quota reached or manager already exists.");
             return false;
         }

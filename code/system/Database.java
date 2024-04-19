@@ -8,14 +8,14 @@ import item.Item;
 import item.Item.Category;
 import staff.Manager;
 import staff.Staff;
-import staff.Staff.Gender;
+import system.User.Gender;
 
 public class Database {
     ArrayList<Branch> branchList = new ArrayList<Branch>();
     ArrayList<User> accountList = new ArrayList<User>();
 
     public Database() {
-        Admin boss = new Admin("boss", "Boss", Gender.F, 62);
+        Admin boss = new Admin("boss", "Boss", Gender.FEMALE, 62);
         this.accountList.add(boss);
         
         Branch NTU = new Branch("NTU", "North Spine Plaza", 8);
@@ -25,18 +25,12 @@ public class Database {
         this.branchList.add(JP);
         this.branchList.add(JE);
 
-        Staff kumarB = new Staff(NTU, "kumarB", "Kumar Blackmore", Gender.M, 32);
-        Manager Alexei = new Manager(NTU, "Alexei", "Alexei", Gender.M, 25);
-        Manager TomC = new Manager(JP, "TomC", "Tom Chan", Gender.M, 56);
-        Manager AlicaA = new Manager(JE, "AliciaA", "Alicia Ang", Gender.F, 27);
-        Staff MaryL = new Staff(JE, "MaryL", "Mary Lee", Gender.F, 44);
-        Staff JustinL = new Staff(JP, "JustinL", "Justin Loh", Gender.M, 49);
-        this.accountList.add(kumarB);
-        this.accountList.add(Alexei);
-        this.accountList.add(TomC);
-        this.accountList.add(AlicaA);
-        this.accountList.add(MaryL);
-        this.accountList.add(JustinL);
+        this.accountList.add(new Staff(NTU, "kumarB", "Kumar Blackmore", Gender.MALE, 32));
+        this.accountList.add(new Manager(NTU, "Alexei", "Alexei", Gender.MALE, 25));
+        this.accountList.add(new Manager(JP, "TomC", "Tom Chan", Gender.MALE, 56));
+        this.accountList.add(new Manager(JE, "AliciaA", "Alicia Ang", Gender.FEMALE, 27));
+        this.accountList.add(new Manager(JE, "AliciaA", "Alicia Ang", Gender.FEMALE, 27));
+        this.accountList.add(new Staff(JP, "JustinL", "Justin Loh", Gender.MALE, 49));
 
         ItemManagement ntuItemManagement = new ItemManagement(NTU);
         ItemManagement jpItemManagement = new ItemManagement(JP);

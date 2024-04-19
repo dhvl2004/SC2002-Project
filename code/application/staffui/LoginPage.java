@@ -15,45 +15,40 @@ class LoginPage {
     private StaffType staffType;
     private int passwordTrial = 3;
 
-    LoginPage(ArrayList<User> accountList) {
+    LoginPage(Scanner sc, ArrayList<User> accountList) {
         AccountManagement accountManagement = new AccountManagement(accountList);
-        Scanner sc = new Scanner(System.in);
 
-        try {
-            String userId = null;
-            do {
-                if (userId != null) {
-                    System.out.println("Unknown User! Please enter a different ID.");
-                }
-                System.out.print("Enter ID: ");
-                userId = sc.next();
-                this.currentUser = accountManagement.find(userId);
-            } while (currentUser == null);
+        String userId = null;
+        do {
+            if (userId != null) {
+                System.out.println("Unknown User! Please enter a different ID.");
+            }
+            System.out.print("Enter ID: ");
+            userId = sc.next();
+            this.currentUser = accountManagement.find(userId);
+        } while (currentUser == null);
 
-            if (this.currentUser instanceof Admin) {
-                this.staffType = StaffType.ADMINISTRATOR;
-            } else if (currentUser instanceof Manager) {
-                this.staffType = StaffType.MANAGER;
-            } else {
-                this.staffType = StaffType.STAFF;
-            }
+        if (this.currentUser instanceof Admin) {
+            this.staffType = StaffType.ADMINISTRATOR;
+        } else if (currentUser instanceof Manager) {
+            this.staffType = StaffType.MANAGER;
+        } else {
+            this.staffType = StaffType.STAFF;
+        }
 
-            String password;
-            int userTrial = 0;
-            while (userTrial < passwordTrial) {
-                System.out.print("Enter Password: ");
-                password = sc.next();
-                if (password.equals(this.currentUser.getPassword())) {
-                    this.successLogin = true;
-                    break;
-                }
-                userTrial++;
+        String password;
+        int userTrial = 0;
+        while (userTrial < passwordTrial) {
+            System.out.print("Enter Password: ");
+            password = sc.next();
+            if (password.equals(this.currentUser.getPassword())) {
+                this.successLogin = true;
+                break;
             }
-            if (userTrial == passwordTrial) {
-                System.out.println("Login Failed! Too many incorrect attempts.");
-            }
-        } finally {
-            sc.close(); // Ensure scanner is closed
+            userTrial++;
+        }
+        if (userTrial == passwordTrial) {
+            System.out.println("Login Failed! Too many incorrect attempts.");
         }
     }
 

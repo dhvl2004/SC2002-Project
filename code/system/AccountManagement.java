@@ -13,7 +13,7 @@ public class AccountManagement {
 
     public User find(String userId) {
         for (User account : accountList) {
-            if (userId.equals(account.getId())) {
+            if (userId.equals(account.getUserId())) {
                 return account;
             }
         }
@@ -21,7 +21,7 @@ public class AccountManagement {
     }
 
     public boolean add(User user) {
-        if (this.find(user.getId()) != null) {
+        if (this.find(user.getUserId()) != null) {
             return false;
         }
 

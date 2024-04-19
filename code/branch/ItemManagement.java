@@ -20,24 +20,20 @@ public class ItemManagement {
 
     public boolean addItem(Item item) {
         if (getItem(item.getId()) != null) {
-            System.out.println("Item with ID " + item.getId() + " already exists.");
             return false;
         }
         
         this.branch.itemList.add(item);
-        System.out.println("Item added: " + item.getName());
         return true;
     }
 
     public Item removeItem(String itemId) {
         Item item = getItem(itemId);
         if (item == null) {
-            System.out.println("Item with ID " + itemId + " not found.");
             return null;
         }
         
         this.branch.itemList.remove(item);
-        System.out.println("Item removed: " + item.getName());
         return item;
     }
 }

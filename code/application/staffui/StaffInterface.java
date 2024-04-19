@@ -1,15 +1,14 @@
 package application.staffui;
 
+import java.util.Scanner;
+
 import system.Database;
 
 public class StaffInterface {
     enum StaffType {STAFF, MANAGER, ADMINISTRATOR};
 
-    private Database database;
-
-    public StaffInterface(Database database) {
-        this.database = database;
-        LoginPage loginPage = new LoginPage(this.database.getAccountList());
+    public StaffInterface(Scanner sc, Database database) {
+        LoginPage loginPage = new LoginPage(sc, database.getAccountList());
         
         if (!loginPage.isSuccessLogin()) {
             System.out.println("Login failed. Please try again.");
@@ -18,7 +17,7 @@ public class StaffInterface {
         
         switch (loginPage.getStaffType()) {
             case ADMINISTRATOR:
-                AdminPage adminPage = new AdminPage(this.database);
+                AdminPage adminPage = new AdminPage(sc, database);
                 // Additional logic for administrators
                 break;
             case MANAGER:

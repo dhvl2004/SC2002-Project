@@ -1,22 +1,30 @@
 package staff;
 
-import branch.*;
-import staff.Staff.Gender;
+import branch.Branch;
+import system.User.Gender;
 
 public class StaffEditor {
     private Staff staff;
 
-    public StaffEditor(Branch branch, String loginId) {
-        StaffManagement staffManagement = new StaffManagement(branch);
-        this.staff = staffManagement.getStaff(loginId);
+    public StaffEditor(Staff staff) {
+        this.staff = staff;
     }
-    
-    public boolean editId(String loginId) {
-        if (this.staff == null || loginId == this.staff.getId()) {
+
+    public boolean editBranch(Branch branch) {
+        if (this.staff == null || branch == this.staff.getBranch()) {
             return false;
         }
         
-        this.staff.setId(loginId);
+        this.staff.setBranch(branch);
+        return true;
+    }
+    
+    public boolean editUserId(String userId) {
+        if (this.staff == null || userId == this.staff.getUserId()) {
+            return false;
+        }
+        
+        this.staff.setUserId(userId);
         return true;
     }
 
