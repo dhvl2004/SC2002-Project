@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class Cart {
 	
     protected ArrayList<CartItem> cartItemList;
-    protected double totalPrice = 0;
 
     public Cart() {
         this.cartItemList = new ArrayList<CartItem>();
@@ -19,6 +18,10 @@ public class Cart {
     }
 
     public double getTotalPrice() {
+        double totalPrice = 0;
+        for (CartItem cartItem : cartItemList) {
+            totalPrice += cartItem.getPrice() * cartItem.getQuantity();
+        }
         return totalPrice;
     }
 

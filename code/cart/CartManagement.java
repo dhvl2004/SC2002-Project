@@ -24,7 +24,6 @@ public class CartManagement {
             }
         }
         this.cart.cartItemList.add(newCartItem);
-        cart.totalPrice += newCartItem.getPrice() * newCartItem.getQuantity();
     }
 
     public CartItem removeCartItem(String itemId) {
@@ -33,7 +32,6 @@ public class CartManagement {
             return null;
         }
         this.cart.cartItemList.remove(cartItem);
-        cart.totalPrice -= cartItem.getPrice() * cartItem.getQuantity();
         return cartItem;
     }
 }

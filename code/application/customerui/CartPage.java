@@ -82,18 +82,22 @@ class CartPage {
             System.out.print("Enter new Quantity: ");
             int newQuantity = sc.nextInt();
             try {
+                if (newQuantity < 0) {
+                    throw new InputOutOfRange();
+                }
                 if (newQuantity == 0) {
                     this.cartManagement.removeCartItem(itemId);
                 }
                 else {
-                    this.cartManagement.removeCartItem(itemId);
-                    CartItem newCartItem = new CartItem(new Item(editedCartItem.getId(), editedCartItem.getName(), editedCartItem.getPrice(), editedCartItem.getCategory()), newQuantity);
-                    this.cartManagement.addCartItem(newCartItem);
+                    editedCartItem.setQuantity(newQuantity);
                 }
             }
             catch (InputMismatchException e) {
                 System.out.println("Invalid input.");
                 sc.next();
+            }
+            catch (InputOutOfRange e) {
+                System.out.println("Invalid input.");
             }
             finally {
                 System.out.println();
