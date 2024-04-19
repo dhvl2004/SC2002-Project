@@ -62,8 +62,7 @@ public class Item {
 			for (Iterator<Item> it = itemSet.iterator(); it.hasNext(); ) {
 				Item itemObj = it.next();
 				if (itemObj.getItemBranch().equals(branchLocation)) {
-					System.out.printf("hi");
-	                System.out.printf("%d. Name: %-20s  Price: %.2f  Quantity: %d%n",
+	                System.out.printf("%d. Name: %-15s  Price: %.2f  Category: %-10s Quantity: %d  Description: %-25s%n",
 	                				  i,
 									  itemObj.getItemName(),
 									  itemObj.getItemPrice(),

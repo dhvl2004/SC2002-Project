@@ -15,23 +15,23 @@ public class CartItem {
 		this.itemDescription = description;
 	}
 	
-	public String itemName() {
+	public String getItemName() {
 		return itemName;
 	}
 	
-	public double itemPrice() {
+	public double getItemPrice() {
 		return itemPrice;
 	}
 	
-	public String itemCategory() {
+	public String getItemCategory() {
 		return itemCategory;
 	}
 	
-	public int itemQuantity() {
+	public int getItemQuantity() {
 		return itemQuantity;
 	}
 	
-	public String itemDescription() {
+	public String getItemDescription() {
 		return itemDescription;
 	}
 }

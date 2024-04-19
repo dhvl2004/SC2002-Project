@@ -45,7 +45,7 @@ public class CustomerInterface {
 					break;
 					
 				case 3:
-					System.out.println("Item description blah blah");
+					customer.makePayment();
 					//print out menu items and item descriptions only
 					System.out.println();
 					break;
