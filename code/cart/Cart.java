@@ -27,10 +27,8 @@ public class Cart {
     }
 
     /* Should the items within the list be identified with itemId? */
-    public void editCartItem(int itemId, int newQuantity) {
-        if (itemId >= 0 && itemId < cartItemList.size())
-            cartItemList.get(itemId).setQuantity(newQuantity);
-        else
+    public void editCartItem(String itemId, int newQuantity) {
+            cartItemList.setQuantity(newQuantity);
             System.out.println("Invalid itemId. Please choose a valid itemId.");
     }
 
