@@ -26,12 +26,6 @@ public class Cart {
         return cartItemList.isEmpty();
     }
 
-    /* Should the items within the list be identified with itemId? */
-    public void editCartItem(String itemId, int newQuantity) {
-            cartItemList.setQuantity(newQuantity);
-            System.out.println("Invalid itemId. Please choose a valid itemId.");
-    }
-
     public void clearCart() {
         cartItemList.clear();
     }
