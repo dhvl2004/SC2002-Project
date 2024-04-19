@@ -12,6 +12,7 @@ public class CustomerInterface {
 	public void customerInterface() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Welcome Customer!");
+		Customer customer = new Customer();
 		System.out.println("Please choose your current branch location: ");
 		branchLocation = scan.next();
 		System.out.println();
@@ -32,7 +33,6 @@ public class CustomerInterface {
 			System.out.println("5. Collect food ");
 			System.out.println("0. Exit Customer Interface");
 			
-			Customer customer = new Customer();
 			int customerAction;			
 			customerAction = scan.nextInt();
 			switch(customerAction) {
@@ -45,14 +45,20 @@ public class CustomerInterface {
 					break;
 					
 				case 3:
-					customer.makePayment();
+					customer.makePayment(); 
 					//print out menu items and item descriptions only
 					System.out.println();
 					break;
 					
 				case 4:
-					System.out.println("Item description blah blah");
-					//print out menu items and item descriptions only
+					System.out.println("The current order status is ...");
+					// continue;
+					System.out.println();
+					break;
+				
+				case 5:
+					System.out.println("Food collected.");
+					// continue;
 					System.out.println();
 					break;
 					

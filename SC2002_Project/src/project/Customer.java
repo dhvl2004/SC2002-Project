@@ -5,8 +5,12 @@ import java.io.IOException;
 
 public class Customer {
 	private int customerID;	//for collectFood (may not need)
-	public Cart cart;
-    
+	private Cart cart;
+	
+	public Customer() {
+		cart = new Cart();
+	}
+	
     public void browseMenu(String branchLocation) {
 		final String directory = System.getProperty("user.dir");
 		String filename = directory + "/resources/menu_list(1).csv";
@@ -28,6 +32,7 @@ public class Customer {
     	int orderChoice = scan.nextInt();
     	while(orderChoice != 0) {
     		// check if order choice was within menu index by using size
+    		// hard coded at the moment
     		if (orderChoice > 3 || orderChoice < 1) {
     			System.out.println("Invalid menu index was entered. Try again.");
     		}
@@ -54,10 +59,15 @@ public class Customer {
     }
 
     public void makePayment() {
-        // pull from payment code repo
-    	cart.displayCartItems();
-    	cart.getTotalPrice();
-        System.out.println("Payment successful. Thank you for your order!");
+        if (cart != null) {
+        	System.out.println("makePayment is running");
+            cart.displayCartItems();
+            cart.getTotalPrice();
+            // pull from payment code repo
+            System.out.println("Payment successful. Thank you for your order!");
+        } else {
+            System.out.println("No items in the cart. Please add items before making payment.");
+        }
     }
 
     public void trackOrderStatus() {

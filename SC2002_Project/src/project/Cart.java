@@ -5,7 +5,7 @@ import java.util.List;
 import java.text.DecimalFormat;
 
 public class Cart {
-    public List<CartItem> itemList;
+    private List<CartItem> itemList;
     
     public Cart() {
     	itemList = new ArrayList<CartItem>();
@@ -27,7 +27,7 @@ public class Cart {
             CartItem cartItem = itemList.get(i);
             System.out.println("Item " + (i + 1) + ":");
             System.out.println("Name: " + cartItem.getItemName());
-            System.out.println("Price: $" + cartItem.getItemPrice());
+            System.out.println("Price: $ " + cartItem.getItemPrice());
             System.out.println("Quantity: " + cartItem.getItemQuantity());
             System.out.println("Description: " + cartItem.getItemDescription());
             System.out.println();
@@ -35,15 +35,6 @@ public class Cart {
         System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
         System.out.println();
     }
-    
-//	  /* used double instead of float for precision   */
-//    public float getTotalPrice() {
-//        float totalPrice = 0;
-//        for (Item item : itemList) {
-//            totalPrice += item.getPrice() * item.getQuantity();
-//        }
-//        return totalPrice;
-//    }
     
     public void getTotalPrice() {
         double totalPrice = 0;
@@ -55,10 +46,9 @@ public class Cart {
     }
 
     
-//    public void addItem(Item item, int quantity) {
-//    	itemList.add(new CartItem(item.getItemId(), item.getItemPrice(), quantity, item.getItemDescription()));
-//    }
-
+    public void clearCart() {
+        itemList.clear();
+    }
     
 //    /* Should the items within the list be identified with itemId? */
 //    public void editItem(int itemId, int newQuantity) {
@@ -77,8 +67,4 @@ public class Cart {
 //            System.out.println("Invalid itemId. Please choose a valid itemId.");
 //    }
 
-    
-    public void clearCart() {
-        itemList.clear();
-    }
 }
