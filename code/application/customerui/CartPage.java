@@ -7,7 +7,6 @@ import cart.Cart;
 import cart.CartItem;
 import cart.CartManagement;
 import exception.InputOutOfRange;
-import item.Item;
 
 class CartPage {
     private Scanner sc;
