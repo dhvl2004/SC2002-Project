@@ -14,9 +14,9 @@ public class FastfoodOrderingAndManagementSystem {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            System.out.println("--------------------");
+            System.out.println("---------------------------------------");
             System.out.println("FASTFOOD ORDERING AND MANAGEMENT SYSTEM");
-            System.out.println("--------------------");
+            System.out.println("---------------------------------------");
             System.out.println("Please choose your login option:");
             System.out.println("1. Customer");
             System.out.println("2. Staff");
