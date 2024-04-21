@@ -8,9 +8,11 @@ import branch.OrderManagement;
 
 
 /**
- * 
- * @author Lam Doung
- * @version 1.1.1
+ * <li>Customer Interface is the entry point for Overall Customer Interface.</li>
+ * <li>Creates new objects of related classes for "Branch selection", "Ordering page","Adding/Customizing order" and "Payment"</li>
+ *
+ * @author FDAB 2
+ * @version 2.0
  * @since 2024-19-04
  *
  */
@@ -18,8 +20,8 @@ public class CustomerInterface {
 	
 	/**
 	 * Constructor for Customer Interface
-	 * @param sc Scanner object 
-	 * @param branchList ArrayList of Branch objects
+	 * @param sc - Scanner object 
+	 * @param branchList - ArrayList containing different Branch objects
 	 */
     public CustomerInterface(Scanner sc, ArrayList<Branch> branchList) {
         System.out.println("--------------------");
