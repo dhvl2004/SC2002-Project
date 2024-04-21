@@ -46,6 +46,7 @@ public class CustomerInterface {
                 System.out.println("3. Go back");
                 System.out.print("Enter your choice: ");
                 int customerChoice = sc.nextInt();
+                System.out.println();
                 try {
                     switch (customerChoice) {
                         case 1:
