@@ -1,5 +1,7 @@
 package application.customerui;
 
+import java.nio.charset.Charset;
+import java.util.Random;
 import java.util.Scanner;
 
 import cart.Cart;
@@ -43,7 +45,7 @@ class PaymentPage {
                 break;
         }
         successPayment = true;
-        this.order = new Order(null, cart.getCartItemList(), diningOption, paymentMode);
+        this.order = new Order(this.generateOrderId(10), cart.getCartItemList(), diningOption, paymentMode);
     }
 
     public boolean isSuccessPayment() {
@@ -52,5 +54,13 @@ class PaymentPage {
 
     public Order getOrder() {
         return order;
+    }
+
+    public String generateOrderId(int orderIdLength) {
+        byte[] array = new byte[orderIdLength];
+        new Random().nextBytes(array);
+        String generatedString = new String(array, Charset.forName("UTF-8"));
+    
+        return generatedString;
     }
 }
