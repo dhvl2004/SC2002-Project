@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import application.customerui.CustomerInterface;
 import application.staffui.StaffInterface;
-import exception.InputOutOfRange;
+import exception.InputOutOfRangeException;
 import system.Database;
 
 public class FastfoodOrderingAndManagementSystem {
@@ -38,14 +38,14 @@ public class FastfoodOrderingAndManagementSystem {
                         System.exit(0);
                         break;
                     default:
-                        throw new InputOutOfRange();
+                        throw new InputOutOfRangeException();
                 }
             } 
             catch (InputMismatchException e) {
                 System.out.println("Invalid input.");
                 sc.next();
             }
-            catch (InputOutOfRange e) {
+            catch (InputOutOfRangeException e) {
                 System.out.println("Invalid input.");
             }
             finally {

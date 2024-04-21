@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import branch.Branch;
 import branch.OrderManagement;
-import exception.InputOutOfRange;
+import exception.InputOutOfRangeException;
 
 
 /**
@@ -36,46 +36,49 @@ public class CustomerInterface {
             if (currentBranch == null) {
                 break;
             }
-            System.out.println("WELCOME TO " + currentBranch.getBranchName() + "!");
-            System.out.println("Please choose your option as a customer:");
-            System.out.println("1. View existing Order");
-            System.out.println("2. Make new Order");
-            System.out.println("3. Go back");
-            System.out.print("Enter your choice: ");
-            int customerChoice = sc.nextInt();
-            try {
-                switch (customerChoice) {
-                    case 1:
-                        
-                        break;
-                    case 2:
-                        OrderManagement orderManagement = new OrderManagement(currentBranch);
+            while (currentBranch != null) {
+                System.out.println("WELCOME TO " + currentBranch.getBranchName() + "!");
+                System.out.println("Please choose your option as a customer:");
+                System.out.println("1. View existing Order");
+                System.out.println("2. Make new Order");
+                System.out.println("3. Go back");
+                System.out.print("Enter your choice: ");
+                int customerChoice = sc.nextInt();
+                try {
+                    switch (customerChoice) {
+                        case 1:
+                            new ViewingPage(currentBranch);
+                            break;
+                        case 2:
+                            OrderManagement orderManagement = new OrderManagement(currentBranch);
 
-                        OrderingPage orderingPage = new OrderingPage(sc, currentBranch.getItemList());
-                        if (!orderingPage.isCheckedOut()) {
+                            OrderingPage orderingPage = new OrderingPage(sc, currentBranch.getItemList());
+                            if (!orderingPage.isCheckedOut()) {
+                                currentBranch = null;
+                                continue;
+                            }
+
+                            PaymentPage paymentPage = new PaymentPage(sc, orderingPage.getCart());
+                            if (!paymentPage.isSuccessPayment()) {
+                                continue;
+                            }
+                            orderManagement.addOrder(paymentPage.getOrder());
+                            break;
+                        case 3:
                             currentBranch = null;
-                            continue;
-                        }
-
-                        PaymentPage paymentPage = new PaymentPage(sc, orderingPage.getCart());
-                        if (!paymentPage.isSuccessPayment()) {
-                            continue;
-                        }
-                        orderManagement.addOrder(paymentPage.getOrder());
-                        break;
-                    default:
-                        throw new InputOutOfRange();
+                            break;
+                        default:
+                            throw new InputOutOfRangeException();
+                    }
+                } 
+                catch (InputOutOfRangeException e) {
+                    System.out.println("Invalid input.");
+                } 
+                catch (InputMismatchException e) {
+                    System.out.println("Invalid input.");
+                    sc.next();
                 }
-            } 
-            catch (InputOutOfRange e) {
-                System.out.println("Invalid input.");
-            } 
-            catch (InputMismatchException e) {
-                System.out.println("Invalid input.");
-                sc.next();
             }
-
-                
         }
     }
 }

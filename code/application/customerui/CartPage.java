@@ -6,7 +6,7 @@ import java.util.Scanner;
 import cart.Cart;
 import cart.CartItem;
 import cart.CartManagement;
-import exception.InputOutOfRange;
+import exception.InputOutOfRangeException;
 
 class CartPage {
     private Scanner sc;
@@ -41,14 +41,14 @@ class CartPage {
                 case 5:
                     return;
                 default:
-                    throw new InputOutOfRange();
+                    throw new InputOutOfRangeException();
             }
         }
         catch (InputMismatchException e) {
             System.out.println("Invalid input.");
             sc.next();
         }
-        catch (InputOutOfRange e) {
+        catch (InputOutOfRangeException e) {
             System.out.println("Invalid input.");
         }
         finally {
@@ -82,7 +82,7 @@ class CartPage {
             int newQuantity = sc.nextInt();
             try {
                 if (newQuantity < 0) {
-                    throw new InputOutOfRange();
+                    throw new InputOutOfRangeException();
                 }
                 if (newQuantity == 0) {
                     this.cartManagement.removeCartItem(itemId);
@@ -95,7 +95,7 @@ class CartPage {
                 System.out.println("Invalid input.");
                 sc.next();
             }
-            catch (InputOutOfRange e) {
+            catch (InputOutOfRangeException e) {
                 System.out.println("Invalid input.");
             }
             finally {
