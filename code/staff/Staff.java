@@ -8,8 +8,8 @@ public class Staff extends User {
     protected Branch branch;
     protected OrderManagement orderManagement;
 
-    public Staff(Branch branch, String staffId, String name, Gender gender, int age) {
-        super(UserType.STAFF, staffId, name, gender, age);
+    public Staff(Branch branch, String staffId, String password, String name, Gender gender, int age) {
+        super(UserType.STAFF, staffId, password, name, gender, age, branch.getBranchName());
         this.branch = branch;
         this.orderManagement = new OrderManagement(branch);
     }

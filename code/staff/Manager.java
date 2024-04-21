@@ -9,8 +9,8 @@ import item.Item.Category;
 public class Manager extends Staff {
     private ItemManagement itemManagement = new ItemManagement(this.branch);
 
-    public Manager(Branch branch, String managerId, String staffName, Gender gender, int age) {
-        super(branch, managerId, staffName, gender, age);
+    public Manager(Branch branch, String managerId, String password, String staffName, Gender gender, int age) {
+        super(branch, managerId, password, staffName, gender, age);
         this.userType = UserType.MANAGER;
     }
 
@@ -24,8 +24,8 @@ public class Manager extends Staff {
         }
     }
 
-    public boolean addItem(String itemId, String itemName, double price, int quantity, Category category) {
-        Item item = new Item(itemId, itemName, price, category);
+    public boolean addItem(String itemId, String itemName, double price, int quantity, Category category, String description) {
+        Item item = new Item(itemId, itemName, price, category, description);
         return itemManagement.addItem(item);
     }
 

@@ -24,6 +24,7 @@ public class OrderManagement {
         }
         
         this.branch.orderList.add(order);
+        this.branch.increaseOrderId();
         return true;
     }
 

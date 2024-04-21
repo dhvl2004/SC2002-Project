@@ -12,7 +12,7 @@ public class OrderDisplay {
             System.out.println(cartItem.getName());
         }
         System.out.println("-------------");
-        System.out.print("Order Status:\t" + order.getOrderStatus().toString());
+        System.out.println("Order Status:\t" + order.getOrderStatus().toString());
         System.out.println("Dining Option:\t" + order.getDiningOption().toString());
         System.out.println("Payment Mode:\t" + order.getPaymentMode());
     }

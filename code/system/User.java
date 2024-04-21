@@ -10,13 +10,16 @@ public abstract class User {
     protected String name;
     protected Gender gender;
     protected int age;
+    protected String branchName;
 
-    public User(UserType userType, String accountId, String name, Gender gender, int age) {
+    public User(UserType userType, String accountId, String password, String name, Gender gender, int age, String branchName) {
         this.userType = userType;
         this.userId = accountId;
+        this.password = password;
         this.name = name;
         this.gender = gender;
         this.age = age;
+        this.branchName = branchName;
     }
 
     public UserType getUserType() {
@@ -42,6 +45,14 @@ public abstract class User {
     public int getAge() {
         return age;
     }
+    
+    public String getBranchName() {
+    	return branchName;
+    }
+    
+    public void setUserType(UserType userType) {
+    	this.userType = userType;
+    }
 
     public void setUserId(String accountId) {
         this.userId = accountId;
@@ -61,5 +72,9 @@ public abstract class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+    
+    public void setBranchName(String branchName) {
+    	this.branchName = branchName;
     }
 }

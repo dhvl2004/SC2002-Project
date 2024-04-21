@@ -5,7 +5,7 @@ import item.Item;
 public class CartItem extends Item {
     private int quantity;
     public CartItem(Item item, int quantity) {
-        super(item.getId(), item.getName(), item.getPrice(), item.getCategory());
+        super(item.getId(), item.getName(), item.getPrice(), item.getCategory(), item.getDescription());
         this.quantity = quantity;
     }
 

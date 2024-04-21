@@ -22,21 +22,25 @@ public class StaffInterface {
 
         BranchManagement branchManagement = new BranchManagement(database);
         switch (loginPage.user.getUserType()) {
-            case UserType.ADMINISTRATOR:
+            case ADMINISTRATOR:
                 Admin admin = (Admin) loginPage.user;
-                new AdminPage(sc, database);
+                new AdminPage(sc, admin, database);
                 break;
-            case UserType.MANAGER:
+            case MANAGER:
                 Manager manager = (Manager) loginPage.user;
-                new ManagerPage(sc, branchManagement.getBranch(manager.getBranch().getBranchName()));
+                new ManagerPage(sc, manager, branchManagement.getBranch(manager.getBranch().getBranchName()));
                 break;
-            case UserType.STAFF:
+            case STAFF:
                 Staff staff = (Staff) loginPage.user;
-                new StaffPage(sc, branchManagement.getBranch(staff.getBranch().getBranchName()));
+                new StaffPage(sc, staff, branchManagement.getBranch(staff.getBranch().getBranchName()));
                 break;
             default:
                 System.out.println("Invalid staff type.");
                 break;
         }
+    }
+    
+    public static void showStaffInterface() {
+    	
     }
 }

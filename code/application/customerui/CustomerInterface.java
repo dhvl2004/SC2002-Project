@@ -57,11 +57,12 @@ public class CustomerInterface {
                             continue;
                         }
 
-                        PaymentPage paymentPage = new PaymentPage(sc, orderingPage.getCart());
+            PaymentPage paymentPage = new PaymentPage(sc, currentBranch.getOrderId(), orderingPage.getCart());
                         if (!paymentPage.isSuccessPayment()) {
                             continue;
                         }
                         orderManagement.addOrder(paymentPage.getOrder());
+            System.out.println("Your Order ID is: " + paymentPage.getOrderId());
                         break;
                     default:
                         throw new InputOutOfRange();
