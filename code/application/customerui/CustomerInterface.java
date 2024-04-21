@@ -41,7 +41,7 @@ public class CustomerInterface {
             System.out.println();
             while (currentBranch != null) {
                 System.out.println("Please choose your option as a customer:");
-                System.out.println("1. View existing Order");
+                System.out.println("1. View Order Status");
                 System.out.println("2. Make new Order");
                 System.out.println("3. Go back");
                 System.out.print("Enter your choice: ");
