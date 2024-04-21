@@ -30,14 +30,16 @@ public class CustomerInterface {
         System.out.println("LOGIN AS CUSTOMER");
         System.out.println("------------------");
         
-        while (true) {
+        Branch currentBranch = null;
+        while (currentBranch == null) {
             BranchSelectionPage branchSelectionPage = new BranchSelectionPage(sc, branchList);
-            Branch currentBranch = branchSelectionPage.getCurrentBranch();
+            currentBranch = branchSelectionPage.getCurrentBranch();
             if (currentBranch == null) {
                 break;
             }
+            System.out.println("WELCOME TO " + currentBranch.getBranchName() + "!");
+            System.out.println();
             while (currentBranch != null) {
-                System.out.println("WELCOME TO " + currentBranch.getBranchName() + "!");
                 System.out.println("Please choose your option as a customer:");
                 System.out.println("1. View existing Order");
                 System.out.println("2. Make new Order");
@@ -48,7 +50,7 @@ public class CustomerInterface {
                     switch (customerChoice) {
                         case 1:
                             new ViewingPage(currentBranch);
-                            break;
+                            return;
                         case 2:
                             OrderManagement orderManagement = new OrderManagement(currentBranch);
 
@@ -63,7 +65,7 @@ public class CustomerInterface {
                                 continue;
                             }
                             orderManagement.addOrder(paymentPage.getOrder());
-                            break;
+                            return;
                         case 3:
                             currentBranch = null;
                             break;

@@ -16,11 +16,13 @@ class ViewingPage {
                 System.out.println(order.getOrderId());
             }
         }
+        System.out.println();
         System.out.println("READY TO PICK UP:");
         for (Order order : orderList) {
             if (order.getOrderStatus() == OrderStatus.READY_TO_PICKUP) {
                 System.out.println(order.getOrderId());
             }
         }
+        System.out.println();
     }
 }
