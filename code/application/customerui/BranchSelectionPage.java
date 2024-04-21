@@ -29,8 +29,6 @@ class BranchSelectionPage {
         
                     currentBranch = branchList.get(branchChoice - 1);
                     System.out.println();
-                    System.out.println("You are currently in " + currentBranch.getBranchName() + "!");
-                    System.out.println();
                 } 
                 catch (InputMismatchException e) {
                     System.out.println("Invalid input.");
