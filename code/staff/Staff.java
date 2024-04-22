@@ -20,6 +20,7 @@ public class Staff extends User {
 
     public void setBranch(Branch branch) {
         this.branch = branch;
+        this.branchName = branch.getBranchName();
     }
 
     public void displayOrderList() {

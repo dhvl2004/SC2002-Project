@@ -1,24 +1,32 @@
 package system;
 import java.io.IOException;
 import java.util.ArrayList;
-import admin.Admin;
 import branch.Branch;
-import branch.ItemManagement;
-import item.Item;
-import item.Item.Category;
-import staff.Manager;
-import staff.Staff;
-import system.User.Gender;
 
 public class Database {
     static ArrayList<Branch> branchList = new ArrayList<Branch>();
     static ArrayList<User> accountList = new ArrayList<User>();
 
     public Database() {
+
+    }
+    
+    public void loadFiles() {
     	try {
-			FileIO.loadBranches("branch_list.csv", branchList);
-			FileIO.loadAccounts("staff_list(2).csv", accountList);
-			FileIO.loadItems("menu_list(1).csv", branchList);
+			FileRead.loadBranches("branch_list.csv", branchList);
+			FileRead.loadAccounts("staff_list(2).csv", accountList);
+			FileRead.loadItems("menu_list(1).csv", branchList);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.err.println(e.getMessage());
+		}
+    }
+    
+    public void saveFiles() {
+    	try {
+			FileWrite.saveBranches("branch_list.csv");
+			FileWrite.saveAccounts("staff_list(2).csv");
+			FileWrite.saveItems("menu_list(1).csv");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.err.println(e.getMessage());

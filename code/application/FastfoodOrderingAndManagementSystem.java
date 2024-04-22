@@ -11,8 +11,9 @@ import system.Database;
 public class FastfoodOrderingAndManagementSystem {
     public static void main(String[] args) {
         Database database = new Database();
+        database.loadFiles();
         Scanner sc = new Scanner(System.in);
-
+        
         while (true) {
             System.out.println("---------------------------------------");
             System.out.println("FASTFOOD ORDERING AND MANAGEMENT SYSTEM");
@@ -35,6 +36,7 @@ public class FastfoodOrderingAndManagementSystem {
                         break;
                     case 3:
                         sc.close();
+                        database.saveFiles();
                         System.exit(0);
                         break;
                     default:
@@ -47,6 +49,10 @@ public class FastfoodOrderingAndManagementSystem {
             }
             catch (InputOutOfRange e) {
                 System.out.println("Invalid input.");
+            }
+            catch (Exception e) {
+            	System.out.println(e.getMessage());
+            	database.saveFiles();
             }
             finally {
                 System.out.println();

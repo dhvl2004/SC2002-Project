@@ -7,7 +7,6 @@ import staff.Manager;
 import staff.Staff;
 import system.BranchManagement;
 import system.Database;
-import system.User.UserType;
 
 public class StaffInterface {
 

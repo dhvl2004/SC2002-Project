@@ -41,7 +41,7 @@ public class Item {
      * @param price Price of the food Item
      * @param category Type of the Food Item
      */
-    public Item(String itemId, String name, double price, Category category) {
+    public Item(String itemId, String name, double price, Category category, String description) {
         this.itemId = itemId;
         this.name = name;
         this.price = price;

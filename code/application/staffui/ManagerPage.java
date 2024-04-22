@@ -17,13 +17,13 @@ class ManagerPage {
 	private Branch branch;
     private ArrayList<Order> orderList;
     private OrderManagement orderManagement;
-    private Manager manager;
+//    private Manager manager;
     
     ManagerPage(Scanner sc, Manager manager, Branch branch) {
         this.branch = branch;
         this.orderList = this.branch.getOrderList();
         this.orderManagement = new OrderManagement(this.branch);
-        this.manager = manager;
+//        this.manager = manager;
         
         while (true) {
         	System.out.println("\n--------------------");
@@ -147,14 +147,14 @@ class ManagerPage {
     	String itemString = sc.nextLine();
     	String[] itemParts = itemString.split(",");
     	if (itemParts.length != 5) {
-    		System.out.println("Error adding new menu item: Invalid format");
+    		System.err.println("Error adding new menu item: Invalid format");
     		return;
     	}
     	try {
     		String itemId = itemParts[0].trim();
         	String name = itemParts[1].trim();
         	Double price = Double.parseDouble(itemParts[2].trim());
-        	String category = itemParts[3].trim();
+        	String category = itemParts[3].trim().toUpperCase();
         	String description = itemParts[4].trim();
         	branch.getItemList().add(new Item(itemId, name, price, category, description));
         	System.out.println(itemId + " added to menu");
@@ -163,7 +163,7 @@ class ManagerPage {
     	} catch (NumberFormatException e) {
     		System.err.println("Error adding new menu item: " + e.getMessage());
     	} catch (Exception e) {
-    		System.err.println("Error addingn new menu item: " + e.getMessage());
+    		System.err.println("Error adding new menu item: " + e.getMessage());
     	}
     }
     

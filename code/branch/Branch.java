@@ -31,12 +31,12 @@ public class Branch {
         calculateManagerQuota();
     }
     
-    public Branch(String branchName, String branchLocation, int staffQuota, int managerQuota, OperationStatus operationStatus) {
+    public Branch(String branchName, String branchLocation, int staffQuota, OperationStatus operationStatus) {
 		this.operationStatus = operationStatus;
 		this.branchName = branchName;
     	this.branchLocation = branchLocation;
     	this.staffQuota = staffQuota;
-    	this.managerQuota = managerQuota;
+    	calculateManagerQuota();
     }
 
     private void calculateManagerQuota() {
