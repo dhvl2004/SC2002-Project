@@ -6,8 +6,23 @@ import java.util.Scanner;
 
 import branch.Branch;
 
+
+/**
+ * 
+ * <li>Class that Allows users to choose their preferred branch and brings them to the options provided by said Branch</li>
+ * @author FDAB 2
+ * @version 2.0
+ * @since 2024
+ * 
+ */
 class BranchSelectionPage {
     private Branch currentBranch = null;
+    
+	    /**
+	     * Public constructor for "BranchSelectionPage", it takes in user's preferred branch and brings them to UI of that branch
+	     * @param sc Scanner Object
+	     * @param branchList ArrayList of Existing Branches
+	     */
         BranchSelectionPage(Scanner sc, ArrayList<Branch> branchList) {
             while (this.currentBranch == null) {
                 try {
@@ -39,7 +54,11 @@ class BranchSelectionPage {
                 }
             }
         }
-    
+    /**
+     * Get method for retrieving the "currentBranch" attribute of "branchSelectionPage"
+     * @return  Returns the current branch that the class is displaying to user
+     */
+
     public Branch getCurrentBranch() {
         return currentBranch;
     }
