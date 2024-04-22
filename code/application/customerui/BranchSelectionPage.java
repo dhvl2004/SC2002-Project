@@ -11,7 +11,7 @@ import branch.Branch;
  * 
  * <li>Class that Allows users to choose their preferred branch and brings them to the options provided by said Branch</li>
  * @author FDAB 2
- * @version 2.0
+ * @version 3.0
  * @since 2024
  * 
  */
