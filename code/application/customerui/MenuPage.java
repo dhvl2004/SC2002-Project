@@ -15,12 +15,14 @@ class MenuPage {
     private ArrayList<Item> menu;
     private CartManagement cartManagement;
 
+    MenuPage() {
+    	
+    }
+    
     MenuPage(Scanner sc, ArrayList<Item> menu, Cart cart) {
         this.sc = sc;
         this.menu = menu;
         this.cartManagement = new CartManagement(cart);
-
-        System.out.println("---MENU---");
         this.displayMenu();
         System.out.println("Please choose your action:");
         System.out.println("1. Add item to cart");
@@ -52,9 +54,11 @@ class MenuPage {
     }
 
     private void displayMenu() {
-        System.out.println("ID\t\t\tName\t\t\tPrice\t\t\tCategory");
+        System.out.println("---MENU---");
+        System.out.println("ID\t\t\tName\t\t\tPrice\t\t\tCategory\t\t\tDescription");
         for (Item item: this.menu) {
-            System.out.println(item.getId() + "\t\t\t" + item.getName() + "\t\t\t" + item.getPrice() + "\t\t\t" + item.getCategory());
+            System.out.println(item.getId() + "\t\t\t" + item.getName() + "\t\t\t" + item.getPrice() + 
+            		"\t\t\t" + item.getCategory() + "\t\t\t" + item.getDescription());
         }
         System.out.println();
     }

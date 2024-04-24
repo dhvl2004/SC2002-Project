@@ -30,6 +30,7 @@ public class Item {
      * Type of food Item 
      */
     private Category category;
+    private String description;
 
     
     /**
@@ -40,11 +41,20 @@ public class Item {
      * @param price Price of the food Item
      * @param category Type of the Food Item
      */
-    public Item(String itemId, String name, double price, Category category) {
+    public Item(String itemId, String name, double price, Category category, String description) {
         this.itemId = itemId;
         this.name = name;
         this.price = price;
         this.category = category;
+        this.description = description;
+    }
+    
+    public Item(String itemId, String name, double price, String category, String description) {
+        this.itemId = itemId;
+        this.name = name;
+        this.price = price;
+        this.category = Category.valueOf(category);
+        this.description = description;
     }
 
     
@@ -80,6 +90,10 @@ public class Item {
     public Category getCategory() {
         return category;
     }
+    
+    public String getDescription() {
+    	return description;
+    }
 
     /**
      * Setter Method for Food ID
@@ -111,6 +125,10 @@ public class Item {
      */
     public void setCategory(Category category) {
         this.category = category;
+    }
+    
+    public void setDescription(String description) {
+    	this.description = description;
     }
 }
 

@@ -21,24 +21,24 @@ public class ManagerManagement {
     public boolean addManager(Manager manager) {
         if (this.branch.managerList.size() == this.branch.getManagerQuota() ||
                 getManager(manager.getUserId()) != null) {
-            System.out.println("Cannot add manager. Manager quota reached or manager already exists.");
+//            System.out.println("Cannot add manager. Manager quota reached or manager already exists.");
             return false;
         }
 
         this.branch.managerList.add(manager);
-        System.out.println("Manager added: " + manager.getName());
+//        System.out.println("Manager added: " + manager.getName());
         return true;
     }
 
     public Manager removeManager(String managerId) {
         Manager manager = getManager(managerId);
         if (manager == null) {
-            System.out.println("Manager with ID " + managerId + " not found.");
+//            System.out.println("Manager with ID " + managerId + " not found.");
             return null;
         }
 
         this.branch.managerList.remove(manager);
-        System.out.println("Manager removed: " + manager.getName());
+//        System.out.println("Manager removed: " + manager.getName());
         return manager;
     }
 }

@@ -17,17 +17,26 @@ public class Branch {
 
     private OperationStatus operationStatus = OperationStatus.OPEN;
     private int openingHour = 800, closingHour = 2200;
-    
+        
     ArrayList<Staff> staffList = new ArrayList<Staff>();
     ArrayList<Manager> managerList = new ArrayList<Manager>();
     ArrayList<Item> itemList = new ArrayList<Item>();
     ArrayList<Order> orderList = new ArrayList<Order>();
+    private int orderId = 0;
 
     public Branch(String branchName, String branchLocation, int staffQuota) {
         this.branchName = branchName;
         this.branchLocation = branchLocation;
         this.staffQuota = staffQuota;
         calculateManagerQuota();
+    }
+    
+    public Branch(String branchName, String branchLocation, int staffQuota, OperationStatus operationStatus) {
+		this.operationStatus = operationStatus;
+		this.branchName = branchName;
+    	this.branchLocation = branchLocation;
+    	this.staffQuota = staffQuota;
+    	calculateManagerQuota();
     }
 
     private void calculateManagerQuota() {
@@ -88,6 +97,10 @@ public class Branch {
     public ArrayList<Order> getOrderList() {
         return this.orderList;
     }
+    
+    public int getOrderId() {
+    	return this.orderId;
+    }
 
     public void setOperationStatus(OperationStatus operationStatus) {
         this.operationStatus = operationStatus;
@@ -99,5 +112,9 @@ public class Branch {
 
     public void setClosingHour(int closingHour) {
         this.closingHour = closingHour;
+    }
+    
+    public void increaseOrderId() {
+    	this.orderId++;
     }
  }

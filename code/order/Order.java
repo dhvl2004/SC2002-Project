@@ -8,6 +8,7 @@ import payment.PaymentMode;
 public class Order {
     public enum OrderStatus {NEW, READY_TO_PICKUP, PICKED_UP};
     public enum DiningOption {DINE_IN, TAKEAWAY};
+    public enum PaymentMode {ONLINE, CARD};
 
     private String orderId;
     private ArrayList<CartItem> itemOrdered;

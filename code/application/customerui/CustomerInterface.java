@@ -66,7 +66,6 @@ public class CustomerInterface {
                                 continue;
                             }
                             orderManagement.addOrder(paymentPage.getOrder());
-
                             new ReceiptPrintingPage(paymentPage.getOrder());
                             return;
                         case 3:

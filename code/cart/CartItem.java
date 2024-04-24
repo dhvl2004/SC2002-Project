@@ -24,7 +24,7 @@ public class CartItem extends Item {
      * @param quantity The Quantity of the Food Item
      */
     public CartItem(Item item, int quantity) {
-        super(item.getId(), item.getName(), item.getPrice(), item.getCategory());
+        super(item.getId(), item.getName(), item.getPrice(), item.getCategory(), item.getDescription());
         this.quantity = quantity;
     }
 
