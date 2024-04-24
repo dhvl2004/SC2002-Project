@@ -8,17 +8,15 @@ import order.Order;
 import order.Order.DiningOption;
 import payment.CardPaymentMode;
 import payment.OnlinePaymentMode;
-import payment.PaymentMode;
+import order.Order.PaymentMode;
 
 class PaymentPage {
     private DiningOption diningOption;
     private PaymentMode paymentMode;
     private boolean successPayment = false;
     private Order order;
-    private int orderId;
 
-    PaymentPage(Scanner sc, int orderId, Cart cart) {
-    	this.orderId = orderId;
+    PaymentPage(Scanner sc, Cart cart) {
         System.out.println("Please choose your dining option:");
         System.out.println("1. Dine In");
         System.out.println("2. Takeaway");
@@ -37,15 +35,12 @@ class PaymentPage {
         System.out.println("1. Online Payment");
         System.out.println("2. Card Payment");
         int paymentModeChoice = sc.nextInt();
-        Order.PaymentMode pm = Order.PaymentMode.ONLINE;
         switch (paymentModeChoice) {
             case 1:
-                paymentMode = new OnlinePaymentMode();
-                pm = Order.PaymentMode.ONLINE;
+                paymentMode = Order.PaymentMode.ONLINE;
                 break;
             case 2:
-                paymentMode = new CardPaymentMode();
-                pm = Order.PaymentMode.CARD;
+                paymentMode = Order.PaymentMode.CARD;
                 break;
         }
         successPayment = true;
@@ -59,6 +54,7 @@ class PaymentPage {
     public Order getOrder() {
         return order;
     }
+
     public String generateOrderId(int orderIdLength) {
         int leftLimit = 97; // letter 'a'
         int rightLimit = 122; // letter 'z'

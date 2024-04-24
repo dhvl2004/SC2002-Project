@@ -3,7 +3,6 @@ package order;
 import java.util.ArrayList;
 
 import cart.CartItem;
-import payment.PaymentMode;
 
 public class Order {
     public enum OrderStatus {NEW, READY_TO_PICKUP, PICKED_UP};
