@@ -50,7 +50,7 @@ public class CustomerInterface {
                 try {
                     switch (customerChoice) {
                         case 1:
-                            new ViewingPage(currentBranch);
+                            new ViewingPage(sc, currentBranch);
                             return;
                         case 2:
                             OrderManagement orderManagement = new OrderManagement(currentBranch);
