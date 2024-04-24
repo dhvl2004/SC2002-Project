@@ -6,7 +6,7 @@ public class OrderDisplay {
     public OrderDisplay(Order order) {
         System.out.println("Order ID: " + order.getOrderId());
         System.out.println("-------------");
-        System.out.println("Item Ordered");
+        System.out.println("Item Ordered:");
         for (int i = 0; i < order.getItemOrdered().size(); i++) {
             CartItem cartItem = order.getItemOrdered().get(i);
             System.out.println(cartItem.getName());

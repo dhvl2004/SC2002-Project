@@ -7,7 +7,7 @@ import java.util.Scanner;
 import cart.Cart;
 import cart.CartItem;
 import cart.CartManagement;
-import exception.InputOutOfRange;
+import exception.InputOutOfRangeException;
 import item.Item;
 
 class MenuPage {
@@ -23,10 +23,8 @@ class MenuPage {
         this.sc = sc;
         this.menu = menu;
         this.cartManagement = new CartManagement(cart);
-
         this.displayMenu();
         System.out.println("Please choose your action:");
-//        System.out.println("1. Display Menu");
         System.out.println("1. Add item to cart");
         System.out.println("2. Go back");
         System.out.print("Enter your choice: ");
@@ -34,23 +32,20 @@ class MenuPage {
             int menuActionChoice = sc.nextInt();
             System.out.println();
             switch (menuActionChoice) {
-//                case 1:
-//                    this.displayMenu();
-//                    break;
                 case 1:
                     this.addItemToCart();
                     break;
                 case 2:
                     return;
                 default:
-                    throw new InputOutOfRange();
+                    throw new InputOutOfRangeException();
                 }
         }
         catch (InputMismatchException e) {
             System.out.println("Invalid input.");
             sc.next();
         }
-        catch (InputOutOfRange e) {
+        catch (InputOutOfRangeException e) {
             System.out.println("Invalid input.");
         }
         finally {
@@ -78,7 +73,7 @@ class MenuPage {
                 int quantity = sc.nextInt();
                 try {
                     if (quantity == 0) {
-                        throw new InputOutOfRange();
+                        throw new InputOutOfRangeException();
                     }
                     this.cartManagement.addCartItem(new CartItem(item, quantity));
                     System.out.println("Item added successfully!");
@@ -87,7 +82,7 @@ class MenuPage {
                     System.out.println("Invalid input.");
                     sc.next();
                 }
-                catch (InputOutOfRange e) {
+                catch (InputOutOfRangeException e) {
                     System.out.println("Invalid input.");
                 }
                 finally {

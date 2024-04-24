@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import branch.Branch;
 import branch.OrderManagement;
-import exception.InputOutOfRange;
+import exception.InputOutOfRangeException;
 
 
 /**
@@ -30,53 +30,59 @@ public class CustomerInterface {
         System.out.println("LOGIN AS CUSTOMER");
         System.out.println("------------------");
         
-        while (true) {
+        Branch currentBranch = null;
+        while (currentBranch == null) {
             BranchSelectionPage branchSelectionPage = new BranchSelectionPage(sc, branchList);
-            Branch currentBranch = branchSelectionPage.getCurrentBranch();
+            currentBranch = branchSelectionPage.getCurrentBranch();
             if (currentBranch == null) {
                 break;
             }
             System.out.println("WELCOME TO " + currentBranch.getBranchName() + "!");
-            System.out.println("Please choose your option as a customer:");
-            System.out.println("1. View existing Order");
-            System.out.println("2. Make new Order");
-            System.out.println("3. Go back");
-            System.out.print("Enter your choice: ");
-            int customerChoice = sc.nextInt();
-            try {
-                switch (customerChoice) {
-                    case 1:
-                        
-                        break;
-                    case 2:
-                        OrderManagement orderManagement = new OrderManagement(currentBranch);
+            System.out.println();
+            while (currentBranch != null) {
+                System.out.println("Please choose your option as a customer:");
+                System.out.println("1. View Order Status");
+                System.out.println("2. Make new Order");
+                System.out.println("3. Go back");
+                System.out.print("Enter your choice: ");
+                int customerChoice = sc.nextInt();
+                System.out.println();
+                try {
+                    switch (customerChoice) {
+                        case 1:
+                            new ViewingPage(sc, currentBranch);
+                            return;
+                        case 2:
+                            OrderManagement orderManagement = new OrderManagement(currentBranch);
 
-                        OrderingPage orderingPage = new OrderingPage(sc, currentBranch.getItemList());
-                        if (!orderingPage.isCheckedOut()) {
+                            OrderingPage orderingPage = new OrderingPage(sc, currentBranch.getItemList());
+                            if (!orderingPage.isCheckedOut()) {
+                                currentBranch = null;
+                                continue;
+                            }
+
+                            PaymentPage paymentPage = new PaymentPage(sc, orderingPage.getCart());
+                            if (!paymentPage.isSuccessPayment()) {
+                                continue;
+                            }
+                            orderManagement.addOrder(paymentPage.getOrder());
+                            new ReceiptPrintingPage(paymentPage.getOrder());
+                            return;
+                        case 3:
                             currentBranch = null;
-                            continue;
-                        }
-
-            PaymentPage paymentPage = new PaymentPage(sc, currentBranch.getOrderId(), orderingPage.getCart());
-                        if (!paymentPage.isSuccessPayment()) {
-                            continue;
-                        }
-                        orderManagement.addOrder(paymentPage.getOrder());
-            System.out.println("Your Order ID is: " + paymentPage.getOrderId());
-                        break;
-                    default:
-                        throw new InputOutOfRange();
+                            break;
+                        default:
+                            throw new InputOutOfRangeException();
+                    }
+                } 
+                catch (InputOutOfRangeException e) {
+                    System.out.println("Invalid input.");
+                } 
+                catch (InputMismatchException e) {
+                    System.out.println("Invalid input.");
+                    sc.next();
                 }
-            } 
-            catch (InputOutOfRange e) {
-                System.out.println("Invalid input.");
-            } 
-            catch (InputMismatchException e) {
-                System.out.println("Invalid input.");
-                sc.next();
             }
-
-                
         }
     }
 }
