@@ -45,7 +45,7 @@ class PaymentPage {
                 break;
         }
         successPayment = true;
-        this.order = new Order(this.generateOrderId(10), cart.getCartItemList(), diningOption, paymentMode);
+        this.order = new Order(this.generateOrderId(5), cart.getCartItemList(), diningOption, paymentMode);
     }
 
     public boolean isSuccessPayment() {
@@ -57,10 +57,16 @@ class PaymentPage {
     }
 
     public String generateOrderId(int orderIdLength) {
-        byte[] array = new byte[orderIdLength];
-        new Random().nextBytes(array);
-        String generatedString = new String(array, Charset.forName("UTF-8"));
-    
+        int leftLimit = 97; // letter 'a'
+        int rightLimit = 122; // letter 'z'
+        Random random = new Random();
+        StringBuilder buffer = new StringBuilder(orderIdLength);
+        for (int i = 0; i < orderIdLength; i++) {
+            int randomLimitedInt = leftLimit + (int) 
+            (random.nextFloat() * (rightLimit - leftLimit + 1));
+            buffer.append((char) randomLimitedInt);
+        }
+        String generatedString = buffer.toString();
         return generatedString;
     }
 }
