@@ -94,7 +94,7 @@ class CartPage {
         for (CartItem cartItem : this.cart.getCartItemList()) {
             System.out.println("Item ID:\t" + cartItem.getId());
             System.out.println("Name:\t" + cartItem.getName());
-            System.out.println("Price:\t$" + cartItem.getPrice());
+            System.out.println("Price:\t$" + Math.round(cartItem.getPrice() * 100) / 100);
             System.out.println("Category:\t" + cartItem.getCategory());
             System.out.println("Quantity:\t" + cartItem.getQuantity());
             System.out.println();

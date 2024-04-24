@@ -33,7 +33,7 @@ class LoginPage {
                 break;
             }
             userTrial++;
-            System.out.println("Incorrect password. " + (passwordTrial - userTrial) + " tires left.");
+            System.out.println("Incorrect password. " + (passwordTrial - userTrial) + " trial(s) left.");
         }
         if (userTrial == passwordTrial) {
             this.user = null;
