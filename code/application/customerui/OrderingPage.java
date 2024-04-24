@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import cart.Cart;
-import exception.InputOutOfRange;
+import exception.InputOutOfRangeException;
 import item.Item;
 
 class OrderingPage {
@@ -43,14 +43,14 @@ class OrderingPage {
                     case 4:
                         return;
                     default:
-                        throw new InputOutOfRange();
+                        throw new InputOutOfRangeException();
                 }
             } 
             catch (InputMismatchException e) {
                 System.out.println("Invalid input.");
                 sc.next();
             }
-            catch (InputOutOfRange e) {
+            catch (InputOutOfRangeException e) {
                 System.out.println("Invalid input.");
             }
             finally {
