@@ -1,6 +1,6 @@
 ItemId,Name,Price,Branch,Category,Description
 fries,FRIES,3.2,NTU,SIDE,Cut Potato
-set1,3PC set meal,9.9,NTU,SET_MEAL,3 pieces of chicken
+set,3PC set meal,9.9,NTU,SET_MEAL,3 pieces of chicken
 nugget,chicken nugget,6.6,NTU,SIDE,Some pieces of mashed chicken
 coke,coke,2.5,NTU,DRINK,black water
 fish,CAJUN FISH,5.6,JP,BURGER,Fish with Spice
