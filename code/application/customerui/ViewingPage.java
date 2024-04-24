@@ -41,8 +41,8 @@ class ViewingPage {
                     System.out.print("Enter order ID: ");
                     String orderId = sc.next();
                     for (Order order : orderList) {
-                        if (order.getOrderId() == orderId) {
-                            if (order.getOrderStatus() == OrderStatus.READY_TO_PICKUP) {
+                        if (order.getOrderId().equals(orderId)) {
+                            if (order.getOrderStatus().equals(OrderStatus.READY_TO_PICKUP)) {
                                 order = new OrderManagement(branch).getOrder(orderId);
                                 new OrderProcessor(order).setPickedUp();
                                 System.out.println("Pick up successfully!");
@@ -52,6 +52,8 @@ class ViewingPage {
                             return;
                         }
                     }
+                    System.out.println("Order not found!");
+                    return;
                 case 2:
                     return;
                 default:
