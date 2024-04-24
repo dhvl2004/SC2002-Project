@@ -21,22 +21,19 @@ class MenuPage {
         this.cartManagement = new CartManagement(cart);
 
         System.out.println("---MENU---");
+        this.displayMenu();
         System.out.println("Please choose your action:");
-        System.out.println("1. Display Menu");
-        System.out.println("2. Add item to cart");
-        System.out.println("3. Go back");
+        System.out.println("1. Add item to cart");
+        System.out.println("2. Go back");
         System.out.print("Enter your choice: ");
         try {
             int menuActionChoice = sc.nextInt();
             System.out.println();
             switch (menuActionChoice) {
                 case 1:
-                    this.displayMenu();
-                    break;
-                case 2:
                     this.addItemToCart();
                     break;
-                case 3:
+                case 2:
                     return;
                 default:
                     throw new InputOutOfRangeException();

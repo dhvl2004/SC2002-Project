@@ -48,28 +48,26 @@ class CartPage {
         this.sc = sc;
         this.cart = cart;
         this.cartManagement = new CartManagement(cart);
+        System.out.println("---CART---");
+        this.displayCart();
         System.out.println("Please enter your action:");
-        System.out.println("1. Display Cart");
-        System.out.println("2. Edit Item in Cart");
-        System.out.println("3. Remove Item from Cart");
-        System.out.println("4. Clear Cart");
-        System.out.println("5. Go Back");
+        System.out.println("1. Edit Item in Cart");
+        System.out.println("2. Remove Item from Cart");
+        System.out.println("3. Clear Cart");
+        System.out.println("4. Go Back");
         int cartActionChoice = sc.nextInt();
         try {
             switch (cartActionChoice) {
                 case 1:
-                    this.displayCart();
-                    break;
-                case 2:
                     this.editCartItem();
                     break;
-                case 3:
+                case 2:
                     this.removeCartItem();
                     break;
-                case 4:
+                case 3:
                     this.cart.clearCart();
                     break;
-                case 5:
+                case 4:
                     return;
                 default:
                     throw new InputOutOfRangeException();
