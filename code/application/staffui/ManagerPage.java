@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import branch.Branch;
+import branch.ItemManagement;
 import branch.OrderManagement;
 import item.Item;
 import order.Order;
@@ -17,13 +18,11 @@ class ManagerPage {
 	private Branch branch;
     private ArrayList<Order> orderList;
     private OrderManagement orderManagement;
-//    private Manager manager;
     
     ManagerPage(Scanner sc, Manager manager, Branch branch) {
         this.branch = branch;
         this.orderList = this.branch.getOrderList();
         this.orderManagement = new OrderManagement(this.branch);
-//        this.manager = manager;
         
         while (true) {
         	System.out.println("\n--------------------");
@@ -156,7 +155,7 @@ class ManagerPage {
         	Double price = Double.parseDouble(itemParts[2].trim());
         	String category = itemParts[3].trim().toUpperCase();
         	String description = itemParts[4].trim();
-        	branch.getItemList().add(new Item(itemId, name, price, category, description));
+        	new ItemManagement(branch).addItem(new Item(itemId, name, price, category, description));
         	System.out.println(itemId + " added to menu");
     	} catch (NullPointerException e) {
     		System.err.println("Error adding new menu item: " + e.getMessage());
@@ -248,7 +247,7 @@ class ManagerPage {
         int choice = sc.nextInt();
         switch (choice) {
         	case 1:
-        		branch.getItemList().remove(item);
+        		new ItemManagement(branch).removeItem(itemId);
         		System.out.println("Item removed");
         		break;
         	case 2:
