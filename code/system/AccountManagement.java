@@ -12,21 +12,54 @@ import staff.Staff;
 import system.User.Gender;
 import system.User.UserType;
 
+
+/**
+ * <li>Class that facilitates full access privileges to all accounts/users in any branch
+ * <li> Class allows for adding,editing and removal of any account(Staff,Manager and Admin)
+ * <li> Class directly interacts with CSV Database when removing , editing or Adding new Account information 
+ * <li>The class have 3 attributes...</li>
+ * 
+ * <ul>
+	 * 	<li>accountlist - ArrayList containing all accounts in the Database
+	 * 	<li> Scanner object
+	 * 	<li> Database - The Database class that reads and Writes to the CSV DataBase file
+ * </ul>
+ * 
+ */
 public class AccountManagement {
     private ArrayList<User> accountList;
     private Scanner sc;
     private Database database;
+    
+    /**
+     * Constructor that creates the AccountManagement class - mainly used for creating AccountManagement with account list
+     * @param accountList ArrayList of all accounts
+     */
 
     public AccountManagement(ArrayList<User> accountList) {
         this.accountList = accountList;
     }
     
+    /**
+     * 
+     * Constructor for AccountManagement, object created will have full access to edit accounts on the CSV Database
+     * @param sc Scanner object
+     * @param accounts arraylist of all accounts 
+     * @param database DataBase to read and write to CSV Database
+     */
     public AccountManagement(Scanner sc, ArrayList<User> accounts, Database database) {
     	this.accountList = accounts;
     	this.sc = sc;
     	this.database = database;
     }
 
+    
+    /**
+     * <li>Method looks through all accounts and returns the user object of the specified userID
+     * <li>Returns null if no matching account(user object) it found
+     * @param userId Specific userID to retrieve
+     * @return Account class of the userID
+     */
     public User getUser(String userId) {
         for (User account : accountList) {
             if (userId.equals(account.getUserId())) {
@@ -36,6 +69,13 @@ public class AccountManagement {
         return null;
     }
 
+    
+    /**
+     * Method that adds a user into account list. If the userID already exists within account list, method returns False
+     * @param user Takes in specified user object to be added
+     * @return <li>Returns boolean True if adding user was successful
+     *         <li> Returns false if user already exists, hence adding specified user is unsuccessful
+     */
     public boolean addUser(User user) {
         if (this.getUser(user.getUserId()) != null) {
             return false;
@@ -45,6 +85,12 @@ public class AccountManagement {
         return true;
     }
 
+    
+    /**
+     * 
+     * @param userId
+     * @return
+     */
     public User removeUser(String userId) {
         User user = this.getUser(userId);
         if (user == null || user instanceof Admin) {

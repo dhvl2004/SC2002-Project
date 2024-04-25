@@ -11,6 +11,9 @@ import branch.Branch.OperationStatus;
 /**
  * 
  * <li>Class that Allows users to choose their preferred branch and brings them to the options provided by said Branch</li>
+ * <li>The class's purpose is mainly to be used for directing Users to a new page when they choose so within "CustomerInterface" class.</li>
+ * 
+ * 
  * @author FDAB 2
  * @version 3.0
  * @since 2024
