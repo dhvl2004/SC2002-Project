@@ -17,6 +17,8 @@ import system.User.UserType;
  * <li>Class that facilitates full access privileges to all accounts/users in any branch
  * <li> Class allows for adding,editing and removal of any account(Staff,Manager and Admin)
  * <li> Class directly interacts with CSV Database when removing , editing or Adding new Account information 
+ *  @author FDAB 2
+ * @version 1.0
  * <li>The class have 3 attributes...</li>
  * 
  * <ul>
@@ -27,13 +29,28 @@ import system.User.UserType;
  * 
  */
 public class AccountManagement {
+	
+	/**
+	 * <li>ArrayList of all User objects
+	 * <li> This attribute represents the arrayList of User accounts that will be manipulated
+	 */
     private ArrayList<User> accountList;
+    
+    /**
+     * Scanner object
+     */
     private Scanner sc;
+    
+    /**
+     * <li>The DataBase that represents information stored on the CSV DataBase
+	 * <li> The DataBase will be read from and written to 
+     */
     private Database database;
     
     /**
-     * Constructor that creates the AccountManagement class - mainly used for creating AccountManagement with account list
-     * @param accountList ArrayList of all accounts
+     * Base Constructor that creates the AccountManagement class
+     * <li> Helps initialize object attribute accountList so as to allow adding,removing and editing of input users in accountList
+     * @param accountList ArrayList of all user
      */
 
     public AccountManagement(ArrayList<User> accountList) {
@@ -87,9 +104,11 @@ public class AccountManagement {
 
     
     /**
-     * 
-     * @param userId
-     * @return
+     * <li>Method removes user from current DataBase
+     * <li> This method will not allow removal of admin accounts
+     * @param userId UserId represents the User Account to be removed from DataBase
+     * @return <li>If removal of User Object was successful.Returns User Object that has been successfully removed
+     * 	       <li>Returns NULL if User object to be removed does not exist within DataBase or if User to be removed is an Administrator
      */
     public User removeUser(String userId) {
         User user = this.getUser(userId);
@@ -101,6 +120,21 @@ public class AccountManagement {
         return user;
     }
 
+    
+    /**
+     * <li>Method Facilitates the adding of new User into the DataBase
+     * <li> The method asks for all required information of the User account to be added
+     * <li>Method will throw exception and not allow adding of User account if one of the following is true...
+     * <ul>
+     * 		<li>Format of information for the User Account is incorrect
+     * 		<li>Error occurs whilst writing to the CSV DataBase File
+     * 		<li>If account to be added is Staff/Manager type and staff or Manager quota for that Branch is at limit
+     * 		<li>If the Account to be added is Staff/Manager but the Branch does not exist
+     * 		<li>If account to be added is Administrator but Admin account already exists
+     * 			
+     * 		
+     * </ul> 
+     */
     public void addAccount() {
     	System.out.println("Enter the following format:\nName,Login Id,Password,Role,Gender,Age,Branch");
     	if (sc.hasNextLine()) sc.nextLine();
@@ -149,6 +183,11 @@ public class AccountManagement {
     	}
     }
 
+    
+    /**
+     * <li>Method represents the general UI that facilitates editing attributes of a User Account object
+     * <li> Gives the options to edit Name,LoginID,Gender,Age,etc of the User Account
+     */
     public void editAccount() {
 //    	displayStaffAccounts(accounts);
     	System.out.print("Enter Login Id of account to edit: ");
@@ -195,6 +234,13 @@ public class AccountManagement {
     	System.out.println("No staff found with Login Id: " + loginId);
     }
     
+    
+    /**
+     *<li>Method takes in the inputed New Name of the User Account and changes the Original
+     *<li>Displays name before and after change, and asks for confirmation. Replying "No" to confirmation will not change the original Name 
+     * @param sc Scanner object
+     * @param user User object that is to be edited
+     */
     public void editName(Scanner sc, User user) {
     	System.out.print("Enter new Name: ");
     	if (sc.hasNextLine()) sc.nextLine();
@@ -215,6 +261,13 @@ public class AccountManagement {
     	System.out.println("Name changed");
     }
     
+    
+    /**
+     *<li>Method takes in the inputed New UserId of the User Account and changes the original
+     *<li>Displays UserID before and after change, and asks for confirmation. Replying "No" to confirmation will not change the original UserID 
+     * @param sc Scanner object
+     * @param user User object that will be edited 
+     */
     public void editLoginId(Scanner sc, User user) {
     	System.out.print("Enter new Login ID: ");
     	if (sc.hasNextLine()) sc.nextLine();
@@ -269,6 +322,13 @@ public class AccountManagement {
 //    	}
 //    }
     
+    
+    /**
+     *<li>Method takes in the inputed New Gender of the User Account and changes the original
+     *<li>Displays Gender before and after change, and asks for confirmation. Replying "No" to confirmation will not change the original Gender 
+     * @param sc Scanner object
+     * @param user User object that will be edited
+     */
     public void editGender(Scanner sc, User user) {
     	if (user.getGender() == Gender.MALE) {
     		System.out.println("Switch to FEMALE?");
@@ -301,6 +361,13 @@ public class AccountManagement {
     	}
     }
     
+    
+    /**
+     *<li>Method takes in the inputed New Age of the User Account and changes the original
+     *<li>Displays Age before and after change, and asks for confirmation. Replying "No" to confirmation will not change the original Age 
+     * @param sc Scanner object
+     * @param user User object that will be edited
+     */
     public void editAge(Scanner sc, User user) {
     	System.out.print("Enter new Age: ");
     	if (sc.hasNextLine()) sc.nextLine();
@@ -321,6 +388,12 @@ public class AccountManagement {
     	System.out.println("Age changed");
     }
 
+    
+    /**
+     * Returns the specific Staff/Manager object of the input User 
+     * @param user User that will be retrieved from DataBase as Staff or Manager
+     * @return Returns a staff/manager object of the input User 
+     */
     public Staff getStaff(User user) {
     	Staff staff = (Staff)user;
 		Branch branch = staff.getBranch();
@@ -338,6 +411,13 @@ public class AccountManagement {
     	return null;
     }
     
+    
+    /**
+     * <li>Facilitates the removal of the account from the DataBase
+     * <li>Throws error if LoginId representing staff to be removed does not exist
+     * <li>Asks for confirmation for removal of staff
+     * <li>Also removes staff from the Branch it was in 
+     */
     public void removeAccount() {
     	System.out.println("Enter Login Id of account to remove: ");
     	if (sc.hasNextLine()) sc.nextLine();

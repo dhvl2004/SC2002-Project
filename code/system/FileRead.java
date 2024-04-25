@@ -17,10 +17,25 @@ import staff.Manager;
 import staff.Staff;
 import system.User.Gender;
 
+
+/**
+ * Class is designed to facilitate reading in from the CSV DataBase
+ *  @author FDAB 2
+ * @version 1.0
+ * 
+ */
 public class FileRead {
 	private static final String directory = System.getProperty("user.dir") + "/resources/";
 	private static final String SEPARATOR = ",";
 	
+	
+	/**
+	 * <li>This method reads in all information of Branches from CSV Database and stores branch objects into input arrayList of branches
+	 * <li> Method should give arraylist of all branches with their respective information 
+	 * @param filename Name of the CSV file to be read
+	 * @param branchList ArrayList of branches.
+	 * @throws IOException Throws exception if reading or writing from the file incurs error
+	 */
 	public static void loadBranches(String filename, ArrayList<Branch> branchList) throws IOException {
 		// read String from text file
 		ArrayList<String> stringArray = (ArrayList<String>)read(filename);
@@ -45,6 +60,14 @@ public class FileRead {
 		}
 	}
 	
+	
+	/**
+	 * <li>This method reads in all information of Users from CSV Database and stores User objects into input arrayList
+	 * <li> Method should result in an arraylist of all users with their respective information 
+	 * @param filename Name of the CSV file to be read
+	 * @param branchList ArrayList of Users.
+	 * @throws IOException Throws exception if reading or writing from the file incurs error
+	 */
 	public static void loadAccounts(String filename, ArrayList<User> accountList) throws IOException {
 		// read String from text file
 		ArrayList<String> stringArray = (ArrayList<String>)read(filename);
@@ -97,6 +120,14 @@ public class FileRead {
 		}
 	}
 	
+	
+	/**
+	 * <li>This method reads in all information of Items from CSV Database and stores Items objects into input arrayList
+	 * <li> Method should result in an arraylist of all Items with their respective information 
+	 * @param filename Name of the CSV file to be read
+	 * @param branchList ArrayList of Items.
+	 * @throws IOException Throws exception if reading or writing from the file incurs error
+	 */
 	public static void loadItems(String filename, ArrayList<Branch> branchList) throws IOException {
 		ArrayList<String> stringArray = (ArrayList<String>)read(filename);
 		
@@ -127,6 +158,13 @@ public class FileRead {
 		}
 	}
 	
+	
+	/**
+	 * This method facilitates reading of the CSV file to retrieve it,s cell values
+	 * @param fileName Name of CSV file to be read from
+	 * @return String of all data read from the CSV file
+	 * @throws IOException Throws exception if reading or writing from the file incurs error
+	 */
 	private static List<String> read(String fileName) throws IOException {
 		List<String> data = new ArrayList<String>();
 		Scanner scanner = new Scanner(new FileInputStream(directory + fileName));
