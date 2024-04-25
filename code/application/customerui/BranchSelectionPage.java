@@ -31,12 +31,14 @@ class BranchSelectionPage {
             while (this.currentBranch == null) {
                 try {
                     System.out.println("Please choose your current branch:");
+                    int optionNum = 0;
                     for (int i = 0; i < branchList.size(); i++) {
                         if (branchList.get(i).getOperationStatus() == OperationStatus.OPEN) {
                             System.out.println((i + 1) + ". " + branchList.get(i).getBranchName());
+                            optionNum++;
                         }
                     }
-                    System.out.println((branchList.size() + 1) + ". Return to Start");     
+                    System.out.println((optionNum) + ". Return to Start");     
                     System.out.print("Enter your choice: ");
 
                     int branchChoice = sc.nextInt();
