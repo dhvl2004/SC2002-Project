@@ -41,7 +41,7 @@ class CartPage {
     /**
      * <li>Constructor for CartPage, creates a CartPage Object that is used by "CustomerInterface" class.</li>
      * <li>Displays User Interface for Cart and Cart Customization</li>
-     * @param Scanner Object
+     * @param sc Scanner Object
      * @param cart Cart object containing User's current items                        
      */
     CartPage(Scanner sc, Cart cart) {

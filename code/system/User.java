@@ -24,12 +24,37 @@ public abstract class User {
      */
     public enum Gender {MALE, FEMALE};
 
+    /**
+     * Type of user 
+     */
     protected UserType userType;
+    
+    /**
+     * UserID of the user
+     */
     protected String userId;
+    
+    /**
+     * Password of User
+     */
     protected String password = "password";
+    
+    /**
+     * Name of the user
+     */
     protected String name;
+    /**
+     * Gender of the user
+     */
     protected Gender gender;
+    /**
+     * Age of the user
+     */
     protected int age;
+    
+    /**
+     * Branch where the user is employed in 
+     */
     protected String branchName;
     
     /**
@@ -39,6 +64,8 @@ public abstract class User {
      * @param name Name of the User
      * @param gender Gender of the User
      * @param age Age of the User
+     * @param password Password of the User
+     * @param branchName Name of the Branch user is employed in
      */
 
     public User(UserType userType, String accountId, String password, String name, Gender gender, int age, String branchName) {

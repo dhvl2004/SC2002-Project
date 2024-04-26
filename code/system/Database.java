@@ -11,7 +11,15 @@ import branch.Branch;
  * @version 1.0
  */
 public class Database {
+	
+	/**
+	 * ArrayList containing all Branches that interacted with Fast-Food Management System
+	 */
     static ArrayList<Branch> branchList = new ArrayList<Branch>();
+    
+    /**
+     * ArrayList containing all Accounts that interacted with Fast-Food Management System
+     */
     static ArrayList<User> accountList = new ArrayList<User>();
 
     

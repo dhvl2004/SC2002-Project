@@ -17,6 +17,10 @@ import system.User;
  */
 class LoginPage {
     private boolean successLogin = false;
+    
+    /**
+     * Initialized User object used as a placeholder for whoever is loggin in
+     */
     User user = null;
     
     /**

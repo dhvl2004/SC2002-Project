@@ -43,7 +43,7 @@ public class StaffEditor {
     /**
      * 
      * Facilitate changing the staff's UserID
-     * @param userID New UserID of intended Staff
+     * @param userId New UserID of intended Staff
      * @return <li>Returns True if changing UserID was successful
      * 		   <li>Returns False if UserID to be edit is already the UserID of the staff, or if staff does not exist
      */

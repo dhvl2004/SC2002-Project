@@ -17,6 +17,11 @@ import system.Database;
  * 
  */
 public class FastfoodOrderingAndManagementSystem {
+	
+	/**
+	 * Main method: entry point for Fast-Food Management System
+	 * @param args
+	 */
     public static void main(String[] args) {
         Database database = new Database();
         database.loadFiles();

@@ -40,6 +40,7 @@ public class Item {
      * @param name Name of the Food Item
      * @param price Price of the food Item
      * @param category Type of the Food Item
+     * @param description Description of the Food item
      */
     public Item(String itemId, String name, double price, Category category, String description) {
         this.itemId = itemId;
@@ -48,7 +49,16 @@ public class Item {
         this.category = category;
         this.description = description;
     }
+
     
+    /**
+     * <li> Constructor for Food item, but with category parameter input as a string as oppose to "Category" object as seen in the other constructor 
+     * @param itemId Id of the Food Item 
+     * @param name Name of the Food Item
+     * @param price Price of the food Item
+     * @param category Type of the Food Item
+     * @param description Description of the Food item
+     */
     public Item(String itemId, String name, double price, String category, String description) {
         this.itemId = itemId;
         this.name = name;
@@ -91,6 +101,11 @@ public class Item {
         return category;
     }
     
+    
+    /**
+     * Getter Method for retrieving Description of Food item 
+     * @return Description of Food Item
+     */
     public String getDescription() {
     	return description;
     }
@@ -127,6 +142,11 @@ public class Item {
         this.category = category;
     }
     
+    
+    /**
+     * Setter method for Description of Food Item
+     * @param description Describing the food item
+     */
     public void setDescription(String description) {
     	this.description = description;
     }

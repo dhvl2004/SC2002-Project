@@ -30,6 +30,10 @@ class MenuPage {
      */
     private CartManagement cartManagement;
 
+    
+    /**
+     * Base Constructor 
+     */
     MenuPage() {
     	
     }

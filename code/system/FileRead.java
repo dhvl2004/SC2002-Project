@@ -65,7 +65,7 @@ public class FileRead {
 	 * <li>This method reads in all information of Users from CSV Database and stores User objects into input arrayList
 	 * <li> Method should result in an arraylist of all users with their respective information 
 	 * @param filename Name of the CSV file to be read
-	 * @param branchList ArrayList of Users.
+	 * @param accountList ArrayList of Users.
 	 * @throws IOException Throws exception if reading or writing from the file incurs error
 	 */
 	public static void loadAccounts(String filename, ArrayList<User> accountList) throws IOException {

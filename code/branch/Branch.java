@@ -182,7 +182,6 @@ public class Branch {
     /**
      * Getter method for retrieving Opening Hours of branch
      * @return Opening Hour as an integer
-     * @return
      */
     public int getOpeningHour() {
         return this.openingHour;
