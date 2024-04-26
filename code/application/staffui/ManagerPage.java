@@ -14,11 +14,27 @@ import order.Order.OrderStatus;
 import staff.Manager;
 import staff.Staff;
 
+
+/**
+ * <li>Class is of the Boundary Stereotype and represents the UI for Manager After login in
+ * <li>Class will asks manager for options/actions to take and call the respective functions of the manager class
+ * 
+ * @author FDAB 2
+ * @version 1.0 
+ */
 class ManagerPage {
 	private Branch branch;
     private ArrayList<Order> orderList;
     private OrderManagement orderManagement;
     
+    
+    /**
+     * <li>Constructor of ManagerPage Class
+     * <li>Upon object creation, the object will represent a single session and the UI page for one manager who is logged in
+     * @param sc scanner object
+     * @param manager Manager object that will carry out the action
+     * @param branch Branch the manager object belongs to
+     */
     ManagerPage(Scanner sc, Manager manager, Branch branch) {
         this.branch = branch;
         this.orderList = this.branch.getOrderList();
@@ -99,6 +115,10 @@ class ManagerPage {
         }
     }
 
+    /**
+     * <li>Method displays all new orders within the branch that has yet to be processed
+     * <li> Prints "no Pending Orders" if there are no current orders
+     */
     private void displayNewOrders() {
     	if (this.orderList.isEmpty()) System.out.println("No pending orders");
         for (Order order : this.orderList) {
@@ -108,6 +128,11 @@ class ManagerPage {
         }
     }
 
+    
+    /**
+     * Method allows manager to view an order specified by orderID
+     * @param orderId OrderID of the order manager wants to view
+     */
     private void viewOrder(String orderId) {
         Order order = this.orderManagement.getOrder(orderId);
         if (order == null) {
@@ -117,6 +142,11 @@ class ManagerPage {
         new OrderDisplay(this.orderManagement.getOrder(orderId));
     }
 
+    
+    /**
+     * Method is a sub-UI allowing interaction for Manager to process order by calling the actual function of the manager class
+     * @param orderId order ID to be processed
+     */
     private void processOrder(String orderId) {
         Order order = this.orderManagement.getOrder(orderId);
         if (order == null) {
@@ -133,6 +163,10 @@ class ManagerPage {
 
     }
     
+    
+    /*
+     * Method is a sub-UI allowing interaction for Manager to display all Staff in the branch  by calling the actual function of the manager class
+     */
     private void displayStaffList() {
     	if (branch.getStaffList().isEmpty()) System.out.println("No staff found");
     	for (Staff staff : branch.getStaffList()) {
@@ -140,6 +174,11 @@ class ManagerPage {
     	}
     }
     
+    /**
+     * <li>Method is a sub-UI allowing interaction for Manager to add new menu item by calling the actual function of the manager class
+     * <li>Method will throw exception if item was unable to be added
+     * @param sc Scanner object 
+     */
     private void addNewMenuItem(Scanner sc) {
     	System.out.println("Enter the following format:\nItemId,Name,Price,Category,Description");
     	if (sc.hasNextLine()) sc.nextLine();	// flush scanner
@@ -166,6 +205,12 @@ class ManagerPage {
     	}
     }
     
+    
+    /**
+     * <li>Method is a sub-UI allowing interaction for Manager to "update menu item" by calling the actual function of the manager class
+     * <li>The method displays all options available for manager to take when updating menu items
+     * @param sc
+     */
     private void updateMenuItem(Scanner sc) {
     	System.out.println("---MENU---");
         System.out.println("ID\t\t\tName\t\t\tPrice\t\t\tCategory\t\t\tDescription");
@@ -225,6 +270,12 @@ class ManagerPage {
 		}
     }
     
+    
+    /**
+     * <li>Method is a sub-UI allowing interaction for Manager to remove a menu item by calling the actual function of the manager class
+     * <li>The sub-UI will let manager know if the removal was succesful or not
+     * @param sc
+     */
     private void removeMenuItem(Scanner sc) {
     	System.out.println("---MENU---");
         System.out.println("ID\t\t\tName\t\t\tPrice\t\t\tCategory\t\t\tDescription");
@@ -256,6 +307,13 @@ class ManagerPage {
         }
     }
     
+    
+    /**
+     * Method allows manager to find and retrieve a food item within the branch 
+     * @param itemId ItemID of the food item to be retrieved
+     * @return <li>Food item object if it was successfully located
+     * <li>NULL if food item did not exist
+     */
     private Item findItem(String itemId) {
     	ArrayList<Item> itemList = branch.getItemList();
     	if (itemList.isEmpty()) return null;

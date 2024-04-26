@@ -18,11 +18,36 @@ import payment.PaymentMode;
 import payment.CardPaymentMode;
 import payment.OnlinePaymentMode;
 
+/**
+ * <li>Administrator class that extends from User Class
+ * <li>A specialization of a type of user
+ * <li>Administrator class is given highest access and methods to fully edit and change the states and attributes of Staff,customer order and branch under the Administrator
+ * <li>Administrator also has unique functionalities like transfering, promoting managers and removing a payment option for a branch
+ * @author FDAB 2
+ * @version 2.0 
+ */
 public class Admin extends User {
+	
+	/**
+	 * Constructor for Admin class
+	 * @param adminId ID identifying the administrator
+	 * @param password Password of Administrator
+	 * @param name Name of Administrator
+	 * @param gender Gender of Administrator
+	 * @param age age of Administrator
+	 * @param branchName Name of Branch that Administrator is employed in 
+	 */
     public Admin(String adminId, String password, String name, Gender gender, int age, String branchName) {
     	super(UserType.ADMINISTRATOR, adminId, password, name, gender, age, branchName);
     }
     
+    
+    /**
+     * Method that prints out all staff and managers under the Administrator along with their information like age,gender,etc.
+     * @param accounts List of all user accounts managed by Administrator
+     * @return <li>False if no accounts are found 
+     * <li>True if at least one staff exist and information is printed
+     */
     public boolean displayStaffAccounts(ArrayList<User> accounts) {
     	if (accounts.isEmpty()) {
     		System.out.println("No accounts found");
@@ -40,6 +65,13 @@ public class Admin extends User {
     	return true;
     }
     
+    
+    /**
+     * <li>Method for Administrator to be able to view all staff by specific filters
+     * @param sc Scanner object
+     * @param accounts all accounts under Administrator
+     * @param database Database where information of these accounts are being read and retrieve from
+     */
     public void chooseFilter(Scanner sc, ArrayList<User> accounts, Database database) {
     	ArrayList<User> filteredList = new ArrayList<User>();
     	Filter filter = new Filter(sc, accounts, database);
@@ -77,6 +109,13 @@ public class Admin extends User {
     	}
     }
     
+    
+    /**
+     * Method is an UI for the facilitation of adding,editing and removing Accounts under the Administrator
+     * @param sc Scanner object
+     * @param accounts all accounts under the Administrator
+     * @param database Database where information of these accounts are being read and retrieve from
+     */
     public void manageAccounts(Scanner sc, ArrayList<User> accounts, Database database) {
     	AccountManagement accountManager = new AccountManagement(sc, accounts, database);
     	while (true) {
@@ -106,6 +145,15 @@ public class Admin extends User {
     	}
     }
     
+    
+    /**
+     * <li>Method allows Administrator to promote a staff into a manager for a branch
+     * <li>Method will convert the type of the staff object into a manager object , while keeping the same object under the same branch
+     * <li>The method will reject operation if the quota of the branch is at limit capacity or if the staff is already promoted to manager
+     * @param sc scanner object
+     * @param accounts all accounts under the Administrator
+     * @param database Database where information of these accounts are being read and retrieve from
+     */
     public void promoteStaff(Scanner sc, ArrayList<User> accounts, Database database) {
     	ArrayList<User> staffList = new ArrayList<User>();
     	for (User user : accounts) {
@@ -136,6 +184,14 @@ public class Admin extends User {
 		System.out.println(manager.getName() + " promoted to Manager");
     }
     
+    
+    /**
+     * <li>Method allows Administrator to be able to transfer staff to another branch
+     * <li>The method will reject the transfer if target branch is already at max capacity
+     * @param sc Scanner object
+     * @param accounts all accounts under the Administrator
+     * @param database Database where information of these accounts are being read and retrieve from
+     */
     public void transferStaff(Scanner sc, ArrayList<User> accounts, Database database) {
     	System.out.print("Enter Login Id of Staff/Manager to transfer: ");
     	if (sc.hasNextLine()) sc.nextLine();
@@ -182,6 +238,12 @@ public class Admin extends User {
     	}
     }
     
+    
+    /**
+     * <li>The method gives administrator the ability to remove and/or add a new or existing payment option
+     * <li>This method effectively affects the payment class's availability itself, meaning if one payment type is added/removed, all branches will gain/lose this payment type 
+     * @param sc Scanner object
+     */
     public void addRemovePayment(Scanner sc) {
     	System.out.println("Select Payment Mode:");
     	System.out.println("1. Online Payment");
@@ -220,6 +282,13 @@ public class Admin extends User {
     	}
     }
     
+    
+    /**
+     * <li>Method allows administrator to be able to open a new branch or close an existing branch
+     * <li>By closing a branch, it means that the operation status of the branch is switched from open to close. Staff ,food item and other information are still retained.
+     * @param sc Scanner object
+     * @param database Database where information of these accounts are being read and retrieve from
+     */
     public void openCloseBranch(Scanner sc, Database database) {
     	System.out.println("Select branch:");
     	int i = 1;
@@ -250,6 +319,14 @@ public class Admin extends User {
 		}
     }
     
+    /**
+     * <li>This method allows administrator to add or remove a branch
+     * <li>This is different from opening and removing a branch
+     * <li>Removing a branch will purge all data and information related to that branch from CSV Database
+     *  
+     * @param sc Scanner Object
+     * @param database Database where information of these accounts are being read and retrieve from
+     */
     public void addRemoveBranch(Scanner sc, Database database) {
 		BranchManagement bm = new BranchManagement(database);
 		while (true) {
@@ -300,6 +377,10 @@ public class Admin extends User {
 		}
     }
     
+    /**
+     * Methods sets up the changing of password for security measures, will validate and stop program if number of trials exit 3 attempts
+     * @param sc scanner object
+     */
     public void changePassword(Scanner sc) {
     	System.out.println("---Change Password---");
     	System.out.println("Enter Old Password: ");

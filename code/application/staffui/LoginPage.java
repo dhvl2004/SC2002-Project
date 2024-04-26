@@ -6,9 +6,25 @@ import java.util.Scanner;
 import system.AccountManagement;
 import system.User;
 
+
+/**
+ *<li>Class is of boundary stereotype and represents the UI for any staff member to login with a valid password
+ *<li>Class will reject Login attempt after 3 tries
+ *@author FDAB 2
+ *@version 1.0 
+ *
+ *
+ */
 class LoginPage {
     private boolean successLogin = false;
     User user = null;
+    
+    /**
+     * Constructor for LoginPage Class, upon instantiation Login UI is created 
+     * @param sc Scanner object
+     * @param accountList List of all staff accounts
+     * @param passwordTrial Number of allowable password attempts
+     */
     LoginPage(Scanner sc, ArrayList<User> accountList, int passwordTrial) {
         AccountManagement accountManagement = new AccountManagement(accountList);
 
@@ -41,6 +57,11 @@ class LoginPage {
         }
     }
 
+    
+    /**
+     * Method identifies if the login on the Login Page has been successful or not
+     * @return successLogin Attribute, which is a boolean representing True if login is a success
+     */
     public boolean isSuccessLogin() {
         return successLogin;
     }

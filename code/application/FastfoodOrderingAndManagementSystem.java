@@ -8,6 +8,14 @@ import application.staffui.StaffInterface;
 import exception.InputOutOfRangeException;
 import system.Database;
 
+
+/**
+ * <li>Class is the entry point for running the whole Fast-Food Management system
+ * <li>Serves as the starting UI for staff/manager or customer to interact with, and will direct respective parties to their UI Pages 
+ * @author FDAB 2
+ * @version 1.0 
+ * 
+ */
 public class FastfoodOrderingAndManagementSystem {
     public static void main(String[] args) {
         Database database = new Database();

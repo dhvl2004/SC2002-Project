@@ -5,10 +5,23 @@ import java.util.Scanner;
 import admin.Admin;
 import system.Database;
 
+/**
+ * <li>UI interface for Administrator
+ * <li>Provide options to execute actions that Administrator can carry out by calling functions of Administrator class
+ * @author FDAB 2
+ * @version 1.0 
+ * 
+ */
 class AdminPage {
 //	private Database database;
 //	private Admin admin;
 	
+	/**
+	 * Constructor for AdminPage 
+	 * @param sc Scanner object
+	 * @param admin Admin that is login in
+	 * @param database DataBase that admin will interact with
+	 */
     AdminPage(Scanner sc, Admin admin, Database database) {
 //    	this.database = database;
 //    	this.admin = admin;
