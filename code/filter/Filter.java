@@ -9,17 +9,41 @@ import system.User;
 import system.User.Gender;
 import system.User.UserType;
 
+
+/**
+ * Allows Specified selection of Users based on specified attributes
+ * <li>This helps provide information of user's with only attribute(specified by user)
+ * <li>For example: to filter out all staff by age
+ * @author FDAB
+ * @version 1.0
+ */
 public class Filter {
 	private Scanner sc;
+	
+	/**
+	 * All accounts within the DataBase
+	 */
 	private ArrayList<User> accounts;
 	private Database database;
 	
+	
+	/**
+	 * Constructor for the filter class
+	 * @param sc Scanner object
+	 * @param accounts List of all accounts involved
+	 * @param database Database storing all user's information
+	 */
 	public Filter(Scanner sc, ArrayList<User> accounts, Database database) {
 		this.sc = sc;
 		this.accounts = accounts;
 		this.database = database;
 	}
 	
+	
+	/**
+	 * Method Filters all users by their role(staff or manager)
+	 * @return A list of all the users fulfilling the specified condition
+	 */
 	public ArrayList<User> roleFilter() {
     	ArrayList<User> filteredList = new ArrayList<User>();
     	
@@ -48,6 +72,11 @@ public class Filter {
     	}
     }
     
+	
+	/**
+	 * Method Filters all users by their Branch
+	 * @return A list of all the users of the same branch 
+	 */
     public ArrayList<User> branchFilter() {
     	ArrayList<User> filteredList = new ArrayList<User>();
     	ArrayList<String> branches = new ArrayList<String>();
@@ -68,6 +97,12 @@ public class Filter {
 		return filteredList;
     }
     
+    
+    /**
+     * Method Filters all users by their Gender
+	 * @return A list of all the users filtered by their gender
+     * 
+     */
     public ArrayList<User> genderFilter() {
     	ArrayList<User> filteredList = new ArrayList<User>();
     	
@@ -95,6 +130,11 @@ public class Filter {
     	}
     }
     
+    
+    /**
+     *  Method Filters all users by their Age
+	 * @return A list of all the users filtered by their Age
+     */
     public ArrayList<User> ageFilter() {
     	ArrayList<User> filteredList = new ArrayList<User>();
     	

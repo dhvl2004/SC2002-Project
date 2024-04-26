@@ -2,7 +2,18 @@ package order;
 
 import cart.CartItem;
 
+
+/**
+ * <li>Class for printing onto UI all items ordered by customer\
+ * <li> This includes the type,name,quantity,price and description of the food items 
+ */
 public class OrderDisplay {
+	
+	/**
+	 * Constructor class 
+	 * <li>Upon Instantiation all food item within a single order will be displayed on the Customer UI
+	 * @param order The order representing a single order by a customer
+	 */
     public OrderDisplay(Order order) {
         System.out.println("Order ID: " + order.getOrderId());
         System.out.println("-------------");
