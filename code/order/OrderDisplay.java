@@ -4,7 +4,8 @@ import cart.CartItem;
 
 
 /**
- * <li>Class for printing onto UI all items ordered by customer\
+ * <li>Class for printing onto UI all items ordered by customer
+ * <li>Class is mainly used as a means to show customers their receipt
  * <li> This includes the type,name,quantity,price and description of the food items 
  */
 public class OrderDisplay {
