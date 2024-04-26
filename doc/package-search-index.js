@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"admin"},{"l":"All Packages","u":"allpackages-index.html"},{"l":"application"},{"l":"application.customerui"},{"l":"application.staffui"},{"l":"branch"},{"l":"cart"},{"l":"exception"},{"l":"filter"},{"l":"item"},{"l":"order"},{"l":"payment"},{"l":"staff"},{"l":"system"}];updateSearchResults();
